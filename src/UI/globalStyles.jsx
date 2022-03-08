@@ -17,7 +17,6 @@ const GlobalStyle = createGlobalStyle`
         line-height: normal;
         outline: none;
 
-
         display: flex;
         align-items: center;
         justify-content: center;

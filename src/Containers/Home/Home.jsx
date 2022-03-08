@@ -1,20 +1,14 @@
 import React from 'react';
 import * as S from './styles';
-import xilften from '../../assets/images/xilften.png';
 import greaterthan from '../../assets/images/greaterthan.svg';
 import background from '../../assets/images/background-home-movies.jpg';
+
+import Header from '../../Components/Header';
 
 const Home = () => {
     return (
         <S.Home>
-            <S.Header>
-                <S.Logo src={xilften} alt='logo' />
-                <S.HeaderContainer>
-                    <S.ButtonHeader disabled={true}>Languages</S.ButtonHeader>
-                    <S.ButtonHeader>Sign In</S.ButtonHeader>
-                </S.HeaderContainer>
-            </S.Header>
-
+            <Header />
             <S.GetStartedSection>
                 <S.GetStartedBackgroundImageWrapper>
                     <S.GetStartedBackgroundImage src={background} alt="Background Home showing movies" />
@@ -40,6 +34,7 @@ const Home = () => {
                     </S.MailSection>
                 </S.CardText>
             </S.GetStartedSection>
+
         </S.Home>
     )
 }

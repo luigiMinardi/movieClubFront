@@ -1,85 +1,11 @@
 import styled from 'styled-components';
+import Button from '../../Components/Button';
 
 export const Home = styled.div`
     width: 100vw;
-    height: 100vh;
 
-    background-color: #282A36;
+    background-color: black;
     color: white;
-`
-
-export const Header = styled.nav`
-    width: 100vw;
-    height: 7em;
-
-    display: flex; 
-    align-items: center;
-    position: relative;
-    z-index: 1;
-
-    font-size: small;
-
-    @media (min-width: 550px) {
-        font-size: 1em;
-    }
-
-    /* @media (min-width: 950px) {
-    } */
-`
-
-export const Logo = styled.img`
-    
-    width: 6em;
-    height: 2.5em;
-    margin-left: 2em;
-    
-    @media (min-width: 550px) {
-        margin-left: 3em;
-        width: 8em;
-        height: 3.1em;
-    }
-    
-    @media (min-width: 950px) {
-        width: 10.5em;
-        height: 4em;
-    }
-`
-
-export const Button = styled.button`
-    height: 2em;
-
-    background-color: #e50914;
-
-    padding: 0 1em;
-
-    cursor: pointer;
-
-    :disabled {
-        filter: brightness(.5);
-        cursor: not-allowed;
-    }
-`
-
-export const ButtonHeader = styled(Button)`
-    border-radius: .188em;
-    margin-right: 1.5em;
-
-    font-size: 1.15em;
-    padding: 0 .5em;
-    
-    @media (min-width: 550px) {
-        padding: 0 1em;
-        font-size: medium;
-    }
-`
-
-
-export const HeaderContainer = styled.div`
-    width: 88%;
-    justify-self: flex-end;
-    
-    display: flex;
-    justify-content: flex-end;
 `
 
 export const SvgArrow = styled.img`
@@ -89,7 +15,7 @@ export const SvgArrow = styled.img`
 
 export const ButtonGetStarted = styled(Button)`
     font-size: medium;
-    height: 2.3em;
+    height: 2.3rem;
 
     :hover {
         filter: brightness(1.1);
@@ -97,8 +23,11 @@ export const ButtonGetStarted = styled(Button)`
 
     @media (min-width: 950px) {
         font-size: x-large;
-        border-radius: 0 .2em .2em 0;
+        border-radius: 0 .2rem .2rem 0;
         height: 3.45rem;
+    }
+    @media (min-width: 1450px) {
+        height: 4rem;
     }
 `
 
@@ -140,13 +69,13 @@ export const GetStartedSection = styled.section`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
+
     text-align: center;
     position: relative;
-    
+
     padding: 0 1.5em;
     height: 30rem;
-    
+
     @media (min-width: 550px) {
         height: 40rem;
     }
@@ -201,14 +130,17 @@ export const MailField = styled.div`
         height:3.45rem;
         border-radius: .2em 0 0 .2em;
     }
+    @media (min-width: 1450px) {
+        height: 4rem;
+    }
 `
 
 export const MailLabel = styled.label`
     position: absolute;
     top: 50%;
     left: 1em;
-    
-    color: grey;
+
+    color: #757575;
     cursor: text;
     user-select: none;
 
@@ -254,6 +186,9 @@ export const H1 = styled.h1`
         max-width: 10em;
         margin: 0 auto;
     }
+    @media (min-width: 1450px) {
+        font-size:4rem;
+    }
 `
 
 export const H2 = styled.h2`
@@ -268,6 +203,7 @@ export const H3 = styled.h3`
     font-size: 1.2rem;
     font-weight: 400;
     padding: 0 1.8em;
+
     @media (min-width: 550px) {
         font-size: 1.5rem;
     }
@@ -275,3 +211,4 @@ export const H3 = styled.h3`
         font-size: 1.2rem;
     }
 `
+
