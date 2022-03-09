@@ -4,6 +4,7 @@ import greaterthan from '../../assets/images/greaterthan.svg';
 import background from '../../assets/images/background-home-movies.jpg';
 
 import Header from '../../Components/Header';
+import Footer from '../../Components/Footer';
 
 const Home = () => {
     return (
@@ -35,6 +36,7 @@ const Home = () => {
                 </S.CardText>
             </S.GetStartedSection>
 
+            <Footer />
         </S.Home>
     )
 }

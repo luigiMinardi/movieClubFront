@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import Button from '../../Components/Button';
 
 export const Home = styled.div`
-    width: 100vw;
 
     background-color: black;
     color: white;

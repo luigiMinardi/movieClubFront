@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import Button from '../Button';
 
 export const Header = styled.nav`
-    width: 100vw;
     height: 7em;
 
     display: flex;
