@@ -1,20 +1,17 @@
 import React from 'react';
 import * as S from './styles';
 import greaterthan from '../../assets/images/greaterthan.svg';
-import background from '../../assets/images/background-home-movies.jpg';
 
 import Header from '../../Components/Header';
 import Footer from '../../Components/Footer';
+import AbsoluteBackgroundImage from '../../Components/AbsoluteBackgroundImage';
 
 const Home = () => {
     return (
         <S.Home>
             <Header />
             <S.GetStartedSection>
-                <S.GetStartedBackgroundImageWrapper>
-                    <S.GetStartedBackgroundImage src={background} alt="Background Home showing movies" />
-                    <S.GetStartedBackgroundGradient></S.GetStartedBackgroundGradient>
-                </S.GetStartedBackgroundImageWrapper>
+                <AbsoluteBackgroundImage />
 
                 <S.CardText>
                     <S.H1>Unlimited movies, TV shows, and more.</S.H1>
