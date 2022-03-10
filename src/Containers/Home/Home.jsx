@@ -1,5 +1,5 @@
 import React from 'react';
-import * as S from './styles';
+import * as S from './Home.styles';
 import greaterthan from '../../assets/images/greaterthan.svg';
 
 import Header from '../../Components/Header';
@@ -9,7 +9,7 @@ import AbsoluteBackgroundImage from '../../Components/AbsoluteBackgroundImage';
 const Home = () => {
     return (
         <S.Home>
-            <Header>
+            <Header imHome>
                 <S.ButtonHeader disabled={true}>Languages</S.ButtonHeader>
                 <S.ButtonHeader url='/login'>Sign In</S.ButtonHeader>
             </Header>
@@ -37,7 +37,7 @@ const Home = () => {
                 </S.CardText>
             </S.GetStartedSection>
 
-            <Footer pt='4.375em' pr='2.8em' pl='2.8em' margin='0 auto' maxWidth='62.5rem' />
+            <Footer pt='4.375em' pr='2.8em' pl='2.8em' margin='0 auto' maxWidth='62.5rem' title="Questions? Make a Issue" />
         </S.Home>
     )
 }

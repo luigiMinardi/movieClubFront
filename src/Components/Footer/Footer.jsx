@@ -1,5 +1,5 @@
 import React from "react";
-import * as S from './styles';
+import * as S from './Footer.styles';
 
 const Footer = (props) => {
     return (
@@ -13,7 +13,7 @@ const Footer = (props) => {
         >
             <S.FooterContainer>
                 <S.FooterBox>
-                    <h4>Questions? Make a Issue</h4>
+                    <S.Title marginLeft={props.titleMarginLeft} >{props.title}</S.Title>
                     <S.FooterGrid>
                         <h5>FAQ</h5>
                         <h5>Help Center</h5>

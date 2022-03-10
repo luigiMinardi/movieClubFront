@@ -6,6 +6,7 @@ export const FooterWrapper = styled.footer`
     position: inherit;
     box-sizing: border-box;
     max-width: ${props => props.maxWidth || undefined};
+    width: ${props => !props.maxWidth ? '100%' : undefined};
     margin: ${props => props.margin || '0'};
 
     padding-top: ${props => props.pt || '0'};
@@ -41,4 +42,9 @@ export const FooterGrid = styled.div`
     > * {
         flex-basis: 25%;
     }
+`
+
+export const Title = styled.h4`
+    align-self: flex-start;
+    margin-left: ${props => props.marginLeft || '0'};
 `

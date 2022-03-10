@@ -1,5 +1,5 @@
 import React from "react";
-import * as S from './styles';
+import * as S from './AbsoluteBgImg.styles';
 
 import background from '../../assets/images/background-movies.jpg';
 import background2 from '../../assets/images/background2-movies.jpg';

@@ -24,6 +24,8 @@ export const Logo = styled.img`
     height: 2.5em;
     margin-left: 2em;
 
+    cursor: ${props => !props.isHome ? 'pointer' : 'default'};
+
     @media (min-width: 550px) {
         margin-left: 3em;
         width: 8em;

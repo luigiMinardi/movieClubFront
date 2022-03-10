@@ -8,7 +8,6 @@ export const Home = styled.div`
 `
 
 export const ButtonHeader = styled(Button)`
-    border-radius: .188em;
     margin-right: 1.5em;
 
     font-size: 1.15em;
