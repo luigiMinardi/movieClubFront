@@ -141,7 +141,7 @@ export const MailInput = styled.input`
         outline: none;
     }
 
-    :focus + label {
+    :focus + ${MailLabel} {
         top: 20%;
         font-size: small;
         font-weight: bold;
