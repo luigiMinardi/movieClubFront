@@ -2,13 +2,12 @@ import React from "react";
 import xilften from '../../assets/images/xilften.png';
 import * as S from './styles';
 
-const Header = () => {
+const Header = (props) => {
     return (
         <S.Header>
             <S.Logo src={xilften} alt='logo' />
             <S.HeaderContainer>
-                <S.ButtonHeader disabled={true}>Languages</S.ButtonHeader>
-                <S.ButtonHeader>Sign In</S.ButtonHeader>
+                {props.children}
             </S.HeaderContainer>
         </S.Header>
     )

@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Button from '../Button';
 
 export const Header = styled.nav`
     height: 7em;
@@ -17,19 +16,6 @@ export const Header = styled.nav`
 
     /* @media (min-width: 950px) {
     } */
-`
-
-export const ButtonHeader = styled(Button)`
-    border-radius: .188em;
-    margin-right: 1.5em;
-
-    font-size: 1.15em;
-    padding: 0 .5em;
-
-    @media (min-width: 550px) {
-        padding: 0 1em;
-        font-size: medium;
-    }
 `
 
 export const Logo = styled.img`

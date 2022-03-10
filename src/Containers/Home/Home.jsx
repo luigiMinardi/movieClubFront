@@ -9,7 +9,11 @@ import AbsoluteBackgroundImage from '../../Components/AbsoluteBackgroundImage';
 const Home = () => {
     return (
         <S.Home>
-            <Header />
+            <Header>
+                <S.ButtonHeader disabled={true}>Languages</S.ButtonHeader>
+                <S.ButtonHeader url='/login'>Sign In</S.ButtonHeader>
+            </Header>
+
             <S.GetStartedSection>
                 <AbsoluteBackgroundImage />
 
@@ -33,7 +37,7 @@ const Home = () => {
                 </S.CardText>
             </S.GetStartedSection>
 
-            <Footer />
+            <Footer pt='4.375em' pr='2.8em' pl='2.8em' margin='0 auto' maxWidth='62.5rem' />
         </S.Home>
     )
 }

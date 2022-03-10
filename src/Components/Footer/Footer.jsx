@@ -1,9 +1,16 @@
 import React from "react";
 import * as S from './styles';
 
-const Footer = () => {
+const Footer = (props) => {
     return (
-        <S.FooterWrapper>
+        <S.FooterWrapper
+            bg={props.bg}
+            pt={props.pt}
+            pl={props.pl}
+            pr={props.pr}
+            margin={props.margin}
+            maxWidth={props.maxWidth}
+        >
             <S.FooterContainer>
                 <S.FooterBox>
                     <h4>Questions? Make a Issue</h4>

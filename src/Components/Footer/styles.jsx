@@ -2,13 +2,15 @@ import styled from 'styled-components';
 
 export const FooterWrapper = styled.footer`
 
+    background-color: ${props => props.bg || 'transparent'};
+    position: inherit;
     box-sizing: border-box;
-    max-width: 62.5rem;
-    margin: 0 auto;
+    max-width: ${props => props.maxWidth || undefined};
+    margin: ${props => props.margin || '0'};
 
-    padding-top: 4.375em;
-    padding-left: 2.8em;
-    padding-right: 2.8em;
+    padding-top: ${props => props.pt || '0'};
+    padding-left: ${props => props.pl || '0'};
+    padding-right: ${props => props.pr || '0'};
 
     color: #757575;
 `

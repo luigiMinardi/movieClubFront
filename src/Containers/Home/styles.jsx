@@ -7,6 +7,19 @@ export const Home = styled.div`
     color: white;
 `
 
+export const ButtonHeader = styled(Button)`
+    border-radius: .188em;
+    margin-right: 1.5em;
+
+    font-size: 1.15em;
+    padding: 0 .5em;
+
+    @media (min-width: 550px) {
+        padding: 0 1em;
+        font-size: medium;
+    }
+`
+
 export const SvgArrow = styled.img`
     margin-left: .5em;
     width: .4em;
