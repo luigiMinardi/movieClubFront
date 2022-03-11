@@ -51,6 +51,11 @@ export const SignInCard = styled.div`
     }
 `
 
+export const FieldWrapper = styled.section`
+    padding-bottom: 1em;
+    width: 100%;
+`
+
 export const LoginButton = styled(Button)`
     height: 3em;
 `

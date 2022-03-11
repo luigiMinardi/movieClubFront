@@ -5,6 +5,8 @@ import greaterthan from '../../assets/images/greaterthan.svg';
 import Header from '../../Components/Header';
 import Footer from '../../Components/Footer';
 import AbsoluteBackgroundImage from '../../Components/AbsoluteBackgroundImage';
+import Field from '../../Components/Field';
+import { white } from '../../styles/colors';
 
 const Home = () => {
     return (
@@ -24,13 +26,22 @@ const Home = () => {
 
                     <S.MailSection>
                         <S.FieldWrapper>
-                            <S.GetStartedField
+                            <Field
                                 type="email"
                                 name="email"
                                 autoComplete='email'
                                 minLength='5'
                                 id="input-email"
-                                bg='white'
+                                label='Email Adress'
+
+                                bg={white}
+
+                                w='90vw'
+                                w550='65vw'
+                                h950='3.45rem'
+                                w950='25rem'
+                                rounded950='.2em 0 0 .2em'
+                                h1450='4rem'
                             />
                         </S.FieldWrapper>
 

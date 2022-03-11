@@ -1,6 +1,8 @@
 export const black = '#000000';
 export const white = '#ffffff';
 export const gray = '#757575';
+export const darkGray = '#333333';
+export const lightGray = '#8c8c8c';
 export const red = '#e50914';
 
 // need to be hex of 6 values

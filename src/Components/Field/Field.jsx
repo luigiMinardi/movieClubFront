@@ -3,9 +3,9 @@ import * as S from './Field.styles';
 
 const Field = (props) => {
     return (
-        <S.MailField bg={props.bg}>
+        <S.MailField {...props} id={undefined} type={undefined} name={undefined} autoComplete={undefined} maxLength={undefined} minLength={undefined} >
             <S.MailInput {...props}></S.MailInput>
-            <S.MailLabel onClick={() => { document.getElementById(`${props.id}`).focus() }}>Email Adress</S.MailLabel>
+            <S.MailLabel labelColor={props.labelColor} pipeColor={props.pipeColor} onClick={() => { document.getElementById(`${props.id}`).focus() }}>{props.label}</S.MailLabel>
         </S.MailField>
     )
 }

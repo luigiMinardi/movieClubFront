@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import Button from '../../Components/Button';
-import Field from '../../Components/Field';
 import { black, white } from '../../styles/colors';
 
 export const Home = styled.div`
@@ -17,21 +16,6 @@ export const ButtonHeader = styled(Button)`
     @media (min-width: 550px) {
         padding: 0 1em;
         font-size: medium;
-    }
-`
-
-export const GetStartedField = styled(Field)`
-    @media (min-width: 550px) {
-        width: 65vw;
-    }
-    @media (min-width: 950px) {
-        font-size: large;
-        width: 25rem;
-        height:3.45rem;
-        border-radius: .2em 0 0 .2em;
-    }
-    @media (min-width: 1450px) {
-        height: 4rem;
     }
 `
 

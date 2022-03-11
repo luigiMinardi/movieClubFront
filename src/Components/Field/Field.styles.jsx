@@ -1,13 +1,26 @@
 import styled from 'styled-components';
-import { gray} from '../../styles/colors';
+import { gray } from '../../styles/colors';
 
 export const MailField = styled.div`
     background-color: ${props => props.bg};
-    height: 2.7em;
-    width: 90vw;
+    height: ${props => props.h || '2.7em'};
+    width: ${props => props.w};
     border-radius: .2em;
 
     position: relative;
+
+    @media (min-width: 550px) {
+        width: ${props => props.w550};
+    }
+    @media (min-width: 950px) {
+        font-size: large;
+        width: ${props => props.w950};
+        height:${props => props.h950 || '3.45rem'};
+        border-radius: ${props => props.rounded950};
+    }
+    @media (min-width: 1450px) {
+        height: ${props => props.h1450};
+    }
 `
 
 export const MailLabel = styled.label`
@@ -15,7 +28,7 @@ export const MailLabel = styled.label`
     top: 50%;
     left: 1em;
 
-    color: ${gray};
+    color: ${props => props.labelColor || gray};
     cursor: text;
     user-select: none;
 
@@ -24,18 +37,19 @@ export const MailLabel = styled.label`
 `
 
 export const MailInput = styled.input`
+    box-sizing: border-box;
+
     width: 100%;
     height: 100%;
-    padding-left: 1em;
+
+    padding-left: .8em;
     padding-top: .2em;
-    border: none;
-    background-color: transparent;
+
+    color: ${props => props.inputColor || 'default'};
 
     font-size: 1.01em;
 
-    :focus {
-        outline: none;
-    }
+    caret-color: ${props => props.pipeColor || 'default'};
 
     :focus + ${MailLabel} {
         top: 20%;

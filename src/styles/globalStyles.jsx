@@ -22,6 +22,16 @@ const GlobalStyle = createGlobalStyle`
         justify-content: center;
     }
 
+    input {
+        border: none;
+
+        background-color: transparent;
+
+        :focus {
+        outline: none;
+        }
+    }
+
     h1 {
         font-size: 2rem;
     }
