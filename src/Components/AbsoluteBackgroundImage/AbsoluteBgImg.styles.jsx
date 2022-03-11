@@ -19,7 +19,7 @@ export const BackgroundImage = styled.img`
 
 export const BackgroundGradient = styled.div`
     background: ${colorDot4()};
-    background-image: linear-gradient(to bottom,${black} 0,rgba(0,0,0,0) 50%, ${colorDot8()} 100%);
+    background-image: linear-gradient(to bottom,${black} 0,transparent 50%, ${colorDot8()} 100%);
     position: absolute;
     top: 0;
     left: 0;
@@ -27,9 +27,9 @@ export const BackgroundGradient = styled.div`
     bottom: 0;
 
     @media (min-width: 550px) {
-        background-image: linear-gradient(to top,${colorDot8()} 0,rgba(0,0,0,0) 40%, rgba(0,0,0,0) 80%,${colorDot8()} 100%);
+        background-image: linear-gradient(to top,${colorDot8()} 0,transparent 40%, transparent 80%,${colorDot8()} 100%);
     }
     @media (min-width: 950px) {
-        background-image: linear-gradient(to top,${colorDot8()} 0,rgba(0,0,0,0) 60%,${colorDot8()} 100%);
+        background-image: linear-gradient(to top,${colorDot8()} 0,transparent 60%,${colorDot8()} 100%);
     }
 `
