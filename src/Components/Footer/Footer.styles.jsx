@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { gray } from '../../styles/colors';
 
 export const FooterWrapper = styled.footer`
 
@@ -13,7 +14,7 @@ export const FooterWrapper = styled.footer`
     padding-left: ${props => props.pl || '0'};
     padding-right: ${props => props.pr || '0'};
 
-    color: #757575;
+    color: ${gray};
 `
 
 export const FooterContainer = styled.div`
@@ -37,7 +38,7 @@ export const FooterGrid = styled.div`
     justify-content: space-between;
     align-items: center;
 
-    color: #757575;
+    color: ${gray};
 
     > * {
         flex-basis: 25%;

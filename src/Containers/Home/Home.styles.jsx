@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 import Button from '../../Components/Button';
+import Field from '../../Components/Field';
+import { black, white } from '../../styles/colors';
 
 export const Home = styled.div`
-
-    background-color: black;
-    color: white;
+    background-color: ${black};
+    color: ${white};
 `
 
 export const ButtonHeader = styled(Button)`
@@ -16,6 +17,21 @@ export const ButtonHeader = styled(Button)`
     @media (min-width: 550px) {
         padding: 0 1em;
         font-size: medium;
+    }
+`
+
+export const GetStartedField = styled(Field)`
+    @media (min-width: 550px) {
+        width: 65vw;
+    }
+    @media (min-width: 950px) {
+        font-size: large;
+        width: 25rem;
+        height:3.45rem;
+        border-radius: .2em 0 0 .2em;
+    }
+    @media (min-width: 1450px) {
+        height: 4rem;
     }
 `
 
@@ -77,6 +93,7 @@ export const FieldWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+
     @media (min-width: 950px) {
         justify-content: flex-end;
     }
@@ -88,63 +105,6 @@ export const MailSection = styled.section`
 
     @media (min-width: 950px) {
         flex-wrap: nowrap;
-    }
-`
-
-export const MailField = styled.div`
-    background-color: white;
-    height: 2.7em;
-    width: 90vw;
-    border-radius: .2em;
-
-    position: relative;
-
-    @media (min-width: 550px) {
-        width: 65vw;
-    }
-
-    @media (min-width: 950px) {
-        font-size: large;
-        width: 25rem;
-        height:3.45rem;
-        border-radius: .2em 0 0 .2em;
-    }
-    @media (min-width: 1450px) {
-        height: 4rem;
-    }
-`
-
-export const MailLabel = styled.label`
-    position: absolute;
-    top: 50%;
-    left: 1em;
-
-    color: #757575;
-    cursor: text;
-    user-select: none;
-
-    transition: font .1s ease,top .1s ease,transform .1s ease,-webkit-transform .1s ease,-moz-transform .1s ease,-o-transform .1s ease;
-    transform: translateY(-50%);
-`
-
-export const MailInput = styled.input`
-    width: 100%;
-    height: 100%;
-    padding-left: 1em;
-    padding-top: .2em;
-    border: none;
-    background-color: transparent;
-
-    font-size: 1.01em;
-
-    :focus {
-        outline: none;
-    }
-
-    :focus + ${MailLabel} {
-        top: 20%;
-        font-size: small;
-        font-weight: bold;
     }
 `
 
@@ -190,4 +150,3 @@ export const H3 = styled.h3`
         font-size: 1.2rem;
     }
 `
-

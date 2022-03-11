@@ -24,10 +24,14 @@ const Home = () => {
 
                     <S.MailSection>
                         <S.FieldWrapper>
-                            <S.MailField>
-                                <S.MailInput type="email" name="email" autoComplete='email' minLength='5' id="input-email"></S.MailInput>
-                                <S.MailLabel onClick={() => { document.getElementById('input-email').focus() }}>Email Adress</S.MailLabel>
-                            </S.MailField>
+                            <S.GetStartedField
+                                type="email"
+                                name="email"
+                                autoComplete='email'
+                                minLength='5'
+                                id="input-email"
+                                bg='white'
+                            />
                         </S.FieldWrapper>
 
                         <S.ButtonWrapper>

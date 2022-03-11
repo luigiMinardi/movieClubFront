@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 import Button from '../../Components/Button';
+import { black, colorDot8, white } from '../../styles/colors';
 
 export const SignIn = styled.div`
-    background-color: black;
-    color: white;
+    background-color: ${black};
+    color: ${white};
 `
 
 export const LoginSection = styled.section`
@@ -27,7 +28,7 @@ export const SignInCardWrapper = styled.section`
 `
 
 export const SignInCard = styled.div`
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: ${colorDot8()};
     
     display: flex;
     flex-direction: column;
@@ -46,7 +47,7 @@ export const SignInCard = styled.div`
     border-radius: .188em;
 
     @media (min-width: 550px) {
-        height: 40rem;
+        height: 35rem;
     }
 `
 
