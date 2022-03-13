@@ -1,13 +1,55 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { connect } from 'react-redux';
+
+import { LOGIN } from '../../redux/actions';
+import { baseURL } from '../../globalVariables';
+
 import * as S from './Login.styles';
+import { colorDot8, darkGray, lightGray, white } from '../../styles/colors';
 
 import AbsoluteBackgroundImage from '../../Components/AbsoluteBackgroundImage';
 import Header from '../../Components/Header';
 import Footer from '../../Components/Footer';
 import Field from '../../Components/Field';
-import { colorDot8, darkGray, lightGray, white } from '../../styles/colors';
 
-const Login = () => {
+const Login = (props) => {
+
+    let navigate = useNavigate();
+
+    const [inputData, setInputData] = useState({ mailNick: '', password: '' });
+    const [errorResponse, setErrorResponse] = useState('');
+
+    const handleInputData = (e) => {
+        setInputData({ ...inputData, [e.target.name]: e.target.value })
+    }
+
+    const login = async () => {
+        try {
+            let body = {
+                email: inputData.mailNick,
+                password: inputData.password
+            }
+
+            let result = await axios.post(`${baseURL}/users/login`, body)
+
+            if (result.data.msg === 'Invalid user or password.') {
+                setErrorResponse(result.data.msg)
+            } else {
+                props.dispatch({ type: LOGIN, payload: result.data })
+
+                setTimeout(() => {
+                    navigate('/browse')
+                }, 1_500)
+            }
+
+
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
     return (
         <S.SignIn>
             <Header />
@@ -22,6 +64,7 @@ const Login = () => {
                             <Field
                                 id="mail-nick"
                                 type="text"
+                                name='mailNick'
                                 label='Email or nickname'
 
                                 bg={darkGray}
@@ -31,12 +74,15 @@ const Login = () => {
 
                                 w='100%'
                                 h='3.125em'
+
+                                onChange={handleInputData}
                             />
                         </S.FieldWrapper>
                         <S.FieldWrapper>
                             <Field
-                                id="pass"
-                                type="password"
+                                id='pass'
+                                name='password'
+                                type='password'
                                 label='Password'
 
                                 bg={darkGray}
@@ -46,6 +92,11 @@ const Login = () => {
 
                                 w='100%'
                                 h='3.125em'
+
+                                test='mailNick'
+                                testValue=''
+
+                                onChange={handleInputData}
                             />
                             <button onClick={() => {
                                 let input = document.getElementById('pass');
@@ -54,7 +105,8 @@ const Login = () => {
                                 SHOW
                             </button>
                         </S.FieldWrapper>
-                        <S.LoginButton>Login</S.LoginButton>
+                        <S.LoginButton onClick={() => login()}>Login</S.LoginButton>
+                        {errorResponse}
                     </S.SignInCard>
                 </S.SignInCardWrapper>
 
@@ -70,4 +122,4 @@ const Login = () => {
     )
 }
 
-export default Login;
+export default connect()(Login);

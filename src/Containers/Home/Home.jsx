@@ -1,19 +1,27 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as S from './Home.styles';
-import greaterthan from '../../assets/images/greaterthan.svg';
 
-import Header from '../../Components/Header';
-import Footer from '../../Components/Footer';
-import AbsoluteBackgroundImage from '../../Components/AbsoluteBackgroundImage';
-import Field from '../../Components/Field';
+import greaterthan from '../../assets/images/greaterthan.svg';
 import { white } from '../../styles/colors';
 
+import AbsoluteBackgroundImage from '../../Components/AbsoluteBackgroundImage';
+import Header from '../../Components/Header';
+import Footer from '../../Components/Footer';
+import Field from '../../Components/Field';
+
 const Home = () => {
+
+    const navigate = useNavigate();
+    const sendMe = (url) => {
+        navigate(url);
+    }
+
     return (
         <S.Home>
             <Header imHome>
                 <S.ButtonHeader disabled={true}>Languages</S.ButtonHeader>
-                <S.ButtonHeader url='/login'>Sign In</S.ButtonHeader>
+                <S.ButtonHeader onClick={() => sendMe('/login')}>Sign In</S.ButtonHeader>
             </Header>
 
             <S.GetStartedSection>
