@@ -4,7 +4,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 
 import { LOGIN } from '../../redux/actions';
-import { baseURL } from '../../globalVariables';
+import { baseURL } from '../../utils';
 
 import * as S from './Login.styles';
 import { colorDot8, darkGray, lightGray, white } from '../../styles/colors';
