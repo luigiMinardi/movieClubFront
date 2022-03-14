@@ -23,6 +23,7 @@ const Login = (props) => {
 
     const handleInputData = (e) => {
         setInputData({ ...inputData, [e.target.name]: e.target.value })
+        console.log(inputData)
     }
 
     const login = async () => {
@@ -75,7 +76,7 @@ const Login = (props) => {
                                 w='100%'
                                 h='3.125em'
 
-                                onChange={handleInputData}
+                                hasChange={handleInputData}
                             />
                         </S.FieldWrapper>
                         <S.FieldWrapper>
@@ -96,7 +97,7 @@ const Login = (props) => {
                                 test='mailNick'
                                 testValue=''
 
-                                onChange={handleInputData}
+                                hasChange={handleInputData}
                             />
                             <button onClick={() => {
                                 let input = document.getElementById('pass');

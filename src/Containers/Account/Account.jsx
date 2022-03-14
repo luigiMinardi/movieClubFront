@@ -64,28 +64,28 @@ const Account = (props) => {
                 id='name'
                 type='text'
                 name='name'
-                onChange={handleUserData}
+                hasChange={handleUserData}
             />
             <Field
                 label={props.authedUser.user.surname}
                 id='surname'
                 type='text'
                 name='surname'
-                onChange={handleUserData}
+                hasChange={handleUserData}
             />
             <Field
                 label={props.authedUser.user.nickname}
                 id='name'
                 type='text'
                 name='name'
-                onChange={handleUserData}
+                hasChange={handleUserData}
             />
             <Field
                 label={props.authedUser.user.email}
                 id='email'
                 type='email'
                 name='email'
-                onChange={handleUserData}
+                hasChange={handleUserData}
             />
             <Field
                 label='password'

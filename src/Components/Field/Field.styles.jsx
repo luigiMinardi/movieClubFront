@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { gray } from '../../styles/colors';
 
-export const MailField = styled.div`
+export const Field = styled.div`
     background-color: ${props => props.bg};
     height: ${props => props.h || '2.7em'};
     width: ${props => props.w};
@@ -23,7 +23,7 @@ export const MailField = styled.div`
     }
 `
 
-export const MailLabel = styled.label`
+export const Label = styled.label`
     position: absolute;
     top: 50%;
     left: 1em;
@@ -36,7 +36,7 @@ export const MailLabel = styled.label`
     transform: translateY(-50%);
 `
 
-export const MailInput = styled.input`
+export const Input = styled.input`
     box-sizing: border-box;
 
     width: 100%;
@@ -51,9 +51,17 @@ export const MailInput = styled.input`
 
     caret-color: ${props => props.pipeColor || 'default'};
 
-    :focus + ${MailLabel} {
+    :focus + ${Label}, :valid + ${Label} {
         top: 20%;
         font-size: small;
         font-weight: bold;
     }
+
+    ${props => props.hasText === true && css`
+        + ${Label} {
+            top: 20%;
+            font-size: small;
+            font-weight: bold;
+        }
+    `}
 `

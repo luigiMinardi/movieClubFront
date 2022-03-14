@@ -1,18 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import * as S from './Field.styles';
 
 const Field = (props) => {
+
+    const [hasText, setHasText] = useState(false);
+
+    const test = (func, e) => {
+        if (e.target.value === '') {
+            setHasText(false);
+        } else {
+            setHasText(true);
+        }
+        if (func) {
+            return func(e)
+        }
+    }
+
     return (
-        <S.MailField {...props} id={undefined} type={undefined} name={undefined} autoComplete={undefined} maxLength={undefined} minLength={undefined} >
-            <S.MailInput {...props}></S.MailInput>
-            <S.MailLabel
+        <S.Field {...props} id={undefined} type={undefined} name={undefined} autoComplete={undefined} maxLength={undefined} minLength={undefined} >
+            <S.Input
+                {...props}
+                required={props.required || true}
+                hasText={hasText}
+                onChange={(e) => { test(props.hasChange, e) }}
+            ></S.Input>
+            <S.Label
                 labelColor={props.labelColor}
                 pipeColor={props.pipeColor}
                 onClick={() => { document.getElementById(`${props.id}`).focus() }}
             >
                 {props.label}
-            </S.MailLabel>
-        </S.MailField>
+            </S.Label>
+        </S.Field>
     )
 }
 
