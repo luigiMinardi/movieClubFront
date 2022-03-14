@@ -106,7 +106,7 @@ const Login = (props) => {
                                 SHOW
                             </button>
                         </S.FieldWrapper>
-                        <S.LoginButton onClick={() => login()}>Login</S.LoginButton>
+                        <S.LoginButton func={login}>Login</S.LoginButton>
                         {errorResponse}
                     </S.SignInCard>
                 </S.SignInCardWrapper>

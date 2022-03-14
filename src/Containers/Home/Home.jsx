@@ -1,5 +1,4 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import * as S from './Home.styles';
 
 import greaterthan from '../../assets/images/greaterthan.svg';
@@ -12,16 +11,11 @@ import Field from '../../Components/Field';
 
 const Home = () => {
 
-    const navigate = useNavigate();
-    const sendMe = (url) => {
-        navigate(url);
-    }
-
     return (
         <S.Home>
             <Header imHome>
                 <S.ButtonHeader disabled={true}>Languages</S.ButtonHeader>
-                <S.ButtonHeader onClick={() => sendMe('/login')}>Sign In</S.ButtonHeader>
+                <S.ButtonHeader param='/login'>Sign In</S.ButtonHeader>
             </Header>
 
             <S.GetStartedSection>
@@ -54,7 +48,7 @@ const Home = () => {
                         </S.FieldWrapper>
 
                         <S.ButtonWrapper>
-                            <S.ButtonGetStarted>Get Started <S.SvgArrow src={greaterthan} /> </S.ButtonGetStarted>
+                            <S.ButtonGetStarted param='/YourAccount'>Get Started <S.SvgArrow src={greaterthan} /> </S.ButtonGetStarted>
                         </S.ButtonWrapper>
                     </S.MailSection>
                 </S.CardText>

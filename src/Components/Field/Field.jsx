@@ -5,7 +5,7 @@ const Field = (props) => {
 
     const [hasText, setHasText] = useState(false);
 
-    const test = (func, e) => {
+    const changeCSSAndReturnOnChangeFunction = (func, e) => {
         if (e.target.value === '') {
             setHasText(false);
         } else {
@@ -22,7 +22,7 @@ const Field = (props) => {
                 {...props}
                 required={props.required || true}
                 hasText={hasText}
-                onChange={(e) => { test(props.hasChange, e) }}
+                onChange={(e) => { changeCSSAndReturnOnChangeFunction(props.hasChange, e) }}
             ></S.Input>
             <S.Label
                 labelColor={props.labelColor}
