@@ -12,7 +12,13 @@ const loginUserReducer = (state = initialState, action) => {
         case LOGOUT:
             return initialState;
         case MODIFY_CREDENTIALS:
-            return { ...state, user: action.payload };
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    [action.payload.field]: action.payload.field_value
+                }
+            };
         default: return state;
     }
 }

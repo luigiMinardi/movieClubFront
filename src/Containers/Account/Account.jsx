@@ -26,6 +26,7 @@ const Account = (props) => {
 
     const handleUserData = (e) => {
         setUserData({ ...userData, [e.target.name]: e.target.value });
+        props.dispatch({ type: MODIFY_CREDENTIALS, payload: { field: e.target.name, field_value: e.target.value } })
     }
 
     useEffect(() => {
@@ -49,9 +50,9 @@ const Account = (props) => {
         try {
             let res = await axios.put(`${baseURL}/users/${props.authedUser.user.id}`, body, config);
 
-            if (res) {
-                props.dispatch({ type: MODIFY_CREDENTIALS, payload: userData })
-            }
+            // if (res) {
+            // TODO: CHANGE BACKEND RES TO RETURN A RES.DATA WITH THE NEW USER DATA.
+            // }
         } catch (e) {
             console.log(e)
         }
@@ -60,28 +61,28 @@ const Account = (props) => {
         <div>
             <Header />
             <Field
-                label={props.authedUser.user.name}
+                label={`Name: ${props.authedUser.user.name}`}
                 id='name'
                 type='text'
                 name='name'
                 hasChange={handleUserData}
             />
             <Field
-                label={props.authedUser.user.surname}
+                label={`Surname: ${props.authedUser.user.surname}`}
                 id='surname'
                 type='text'
                 name='surname'
                 hasChange={handleUserData}
             />
             <Field
-                label={props.authedUser.user.nickname}
-                id='name'
+                label={`Nickname: ${props.authedUser.user.nickname}`}
+                id='nickname'
                 type='text'
-                name='name'
+                name='nickname'
                 hasChange={handleUserData}
             />
             <Field
-                label={props.authedUser.user.email}
+                label={`Email: ${props.authedUser.user.email}`}
                 id='email'
                 type='email'
                 name='email'
@@ -93,7 +94,7 @@ const Account = (props) => {
                 type='password'
                 name='password'
             />
-            <Button onClick={updateUser} >Update</Button>
+            <Button func={updateUser} >Update</Button>
             <Footer />
         </div>
     );
