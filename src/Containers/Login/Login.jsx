@@ -99,9 +99,15 @@ const Login = (props) => {
 
                                 hasChange={handleInputData}
                             />
-                            <button onClick={() => {
+                            <button onClick={(e) => {
                                 let input = document.getElementById('pass');
-                                input.type = input.type === 'password' ? input.type = 'text' : input.type = 'password'
+                                if (input.type === 'password') {
+                                    input.type = 'text'
+                                    e.target.innerHTML = 'HIDE'
+                                } else {
+                                    input.type = 'password'
+                                    e.target.innerHTML = 'SHOW'
+                                }
                             }}>
                                 SHOW
                             </button>

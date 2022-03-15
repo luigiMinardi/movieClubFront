@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 import axios from "axios";
 
-import { MODIFY_CREDENTIALS } from "../../redux/actions";
+import { MODIFY_USER } from "../../redux/actions";
 
 import * as S from './Account.styles';
 import { baseURL } from "../../utils";
@@ -26,7 +26,7 @@ const Account = (props) => {
 
     const handleUserData = (e) => {
         setUserData({ ...userData, [e.target.name]: e.target.value });
-        props.dispatch({ type: MODIFY_CREDENTIALS, payload: { field: e.target.name, field_value: e.target.value } })
+        props.dispatch({ type: MODIFY_USER, payload: { field: e.target.name, field_value: e.target.value } })
     }
 
     useEffect(() => {

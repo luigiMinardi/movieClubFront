@@ -1,4 +1,4 @@
-import { LOGIN, LOGOUT, MODIFY_CREDENTIALS } from '../actions';
+import { LOGIN, LOGOUT, MODIFY_USER } from '../actions';
 
 const initialState = {
     token: '',
@@ -11,7 +11,7 @@ const loginUserReducer = (state = initialState, action) => {
             return { ...state, token: action.payload.token, user: action.payload.user };
         case LOGOUT:
             return initialState;
-        case MODIFY_CREDENTIALS:
+        case MODIFY_USER:
             return {
                 ...state,
                 user: {
