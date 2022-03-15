@@ -12,7 +12,7 @@ import Field from '../../Components/Field';
 const Home = () => {
 
     return (
-        <S.Home>
+        <>
             <Header imHome>
                 <S.ButtonHeader disabled={true}>Languages</S.ButtonHeader>
                 <S.ButtonHeader param='/login'>Sign In</S.ButtonHeader>
@@ -55,7 +55,7 @@ const Home = () => {
             </S.GetStartedSection>
 
             <Footer pt='4.375em' pr='2.8em' pl='2.8em' margin='0 auto' maxWidth='62.5rem' title="Questions? Make a Issue" />
-        </S.Home>
+        </>
     )
 }
 

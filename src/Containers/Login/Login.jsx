@@ -52,7 +52,7 @@ const Login = (props) => {
     }
 
     return (
-        <S.SignIn>
+        <>
             <Header />
 
             <S.LoginSection>
@@ -125,7 +125,7 @@ const Login = (props) => {
                     titleMarginLeft='4.8em'
                 />
             </S.LoginSection>
-        </S.SignIn>
+        </>
     )
 }
 

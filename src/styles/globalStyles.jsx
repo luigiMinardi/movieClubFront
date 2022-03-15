@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { backgroundColor, fontColor } from "./colors";
 
 const GlobalStyle = createGlobalStyle`
     button {
@@ -44,8 +45,10 @@ const GlobalStyle = createGlobalStyle`
         font-size: 1.17rem;
     }
 
-    /* Default config */
     body {
+        background-color: ${backgroundColor};
+        color: ${fontColor};
+        /* Default config */
         margin: 0;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
             'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',

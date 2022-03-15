@@ -1,11 +1,6 @@
 import styled from 'styled-components';
 import Button from '../../Components/Button';
-import { black, colorDot8, white } from '../../styles/colors';
-
-export const SignIn = styled.div`
-    background-color: ${black};
-    color: ${white};
-`
+import { colorDot8 } from '../../styles/colors';
 
 export const LoginSection = styled.section`
         display: flex;

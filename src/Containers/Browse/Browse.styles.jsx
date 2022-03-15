@@ -1,11 +1,5 @@
 import styled from 'styled-components';
 import Button from '../../Components/Button';
-import { black, white } from '../../styles/colors';
-
-export const Browse = styled.div`
-    background-color: ${black};
-    color: ${white};
-`
 
 export const ButtonHeader = styled(Button)`
     margin-right: 1.5em;

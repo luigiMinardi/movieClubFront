@@ -58,7 +58,7 @@ const Account = (props) => {
         }
     }
     return (
-        <div>
+        <>
             <Header />
             <Field
                 label={`Name: ${props.authedUser.user.name}`}
@@ -96,7 +96,7 @@ const Account = (props) => {
             />
             <Button func={updateUser} >Update</Button>
             <Footer />
-        </div>
+        </>
     );
 }
 

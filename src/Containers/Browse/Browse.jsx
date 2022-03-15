@@ -40,7 +40,7 @@ const Browse = (props) => {
     }
     if (movies[0]?.id != undefined) {
         return (
-            <S.Browse>
+            <>
                 <Header>
                     <S.ButtonHeader disabled={true}>Languages</S.ButtonHeader>
                     <S.ButtonHeader>Click to Signoff</S.ButtonHeader>
@@ -56,12 +56,12 @@ const Browse = (props) => {
                 })}
 
                 <Footer pt='4.375em' pr='2.8em' pl='2.8em' margin='0 auto' maxWidth='62.5rem' title="Questions? Make a Issue" />
-            </S.Browse>
+            </>
         )
     }
     else {
         return (
-            <S.Browse>
+            <>
                 <Header>
                     <S.ButtonHeader disabled={true}>Languages</S.ButtonHeader>
                     <S.ButtonHeader>Click to Signoff</S.ButtonHeader>
@@ -70,7 +70,7 @@ const Browse = (props) => {
                 <div>Loading...</div>
 
                 <Footer pt='4.375em' pr='2.8em' pl='2.8em' margin='0 auto' maxWidth='62.5rem' title="Questions? Make a Issue" />
-            </S.Browse>
+            </>
         )
     }
 }
