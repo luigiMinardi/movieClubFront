@@ -36,9 +36,9 @@ const Browse = (props) => {
 
         props.dispatch({ type: MOVIE_INFO, payload: movie });
 
-        // navigate('/detail')
+        navigate('/detail')
     }
-    if (movies[0]?.id != undefined) {
+    if (movies[0]?.id !== undefined) {
         return (
             <>
                 <Header>

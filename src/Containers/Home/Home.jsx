@@ -14,7 +14,7 @@ const Home = () => {
     return (
         <>
             <Header imHome>
-                <S.ButtonHeader disabled={true}>Languages</S.ButtonHeader>
+                <S.ButtonHeader param='/browse'>Catalog</S.ButtonHeader>
                 <S.ButtonHeader param='/login'>Sign In</S.ButtonHeader>
             </Header>
 

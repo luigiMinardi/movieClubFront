@@ -14,6 +14,7 @@ const Header = (props) => {
     }
 
     const checkifIsLeft = (e) => {
+        // console.log(e.detail) // TODO: Use e.detail to auto animate the logo on double click, onclick go to wherever you want.
         let wrapper = document.getElementById('wrapper').getBoundingClientRect();
         // wrapper.left is the same as getElementById('wrapper').offSetLeft and the same goes to width.
         let x = e.clientX - wrapper.left; // e.clientX picks the mouse position relative to the client width (left to right).
