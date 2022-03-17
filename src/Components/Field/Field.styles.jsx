@@ -45,11 +45,11 @@ export const Input = styled.input`
     padding-left: .8em;
     padding-top: .2em;
 
-    color: ${props => props.inputColor || 'default'};
+    color: ${props => props.inputColor || 'unset'};
 
     font-size: 1.01em;
 
-    caret-color: ${props => props.pipeColor || 'default'};
+    caret-color: ${props => props.pipeColor || 'unset'};
 
     :focus + ${Label}, :valid + ${Label} {
         top: 20%;

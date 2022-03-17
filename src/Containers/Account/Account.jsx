@@ -12,7 +12,19 @@ import Footer from "../../Components/Footer";
 import Field from "../../Components/Field";
 import Button from "../../Components/Button";
 
+let defaultData
+
 const Account = (props) => {
+
+    useEffect(() => {
+        defaultData = {
+            name: props.authedUser.user.name,
+            surname: props.authedUser.user.surname,
+            age: props.authedUser.user.age,
+            email: props.authedUser.user.email,
+            nickname: props.authedUser.user.nickname
+        }
+    }, [])
 
     let navigate = useNavigate();
 
@@ -25,8 +37,13 @@ const Account = (props) => {
     });
 
     const handleUserData = (e) => {
-        setUserData({ ...userData, [e.target.name]: e.target.value });
-        props.dispatch({ type: MODIFY_USER, payload: { field: e.target.name, field_value: e.target.value } })
+        if (e.target.value) {
+            setUserData({ ...userData, [e.target.name]: e.target.value });
+            props.dispatch({ type: MODIFY_USER, payload: { field: e.target.name, field_value: e.target.value } })
+        } else {
+            setUserData({ ...userData, [e.target.name]: defaultData[e.target.name] });
+            props.dispatch({ type: MODIFY_USER, payload: { field: e.target.name, field_value: defaultData[e.target.name] } })
+        }
     }
 
     useEffect(() => {
