@@ -21,7 +21,7 @@ const Detail = (props) => {
     return (
         <>
             <Header>
-                <S.ButtonHeader disabled={true}>Languages</S.ButtonHeader>
+                <S.ButtonHeader param='/browse'>Return</S.ButtonHeader>
                 <S.ButtonHeader>Click to Signoff</S.ButtonHeader>
             </Header>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>

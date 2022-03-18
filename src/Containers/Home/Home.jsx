@@ -1,22 +1,38 @@
 import React from 'react';
-import * as S from './Home.styles';
+import { useNavigate } from 'react-router-dom';
 
+import * as S from './Home.styles';
 import greaterthan from '../../assets/images/greaterthan.svg';
+import profilepic from '../../assets/images/profilepic.png';
 import { white } from '../../styles/colors';
 
 import AbsoluteBackgroundImage from '../../Components/AbsoluteBackgroundImage';
 import Header from '../../Components/Header';
 import Footer from '../../Components/Footer';
 import Field from '../../Components/Field';
+import { LOGOUT } from '../../redux/actions';
+import { connect } from 'react-redux';
 
-const Home = () => {
+const Home = (props) => {
+
+    let navigate = useNavigate()
+
+    const logOut = () => {
+        props.dispatch({ type: LOGOUT });
+    }
 
     return (
         <>
             <Header imHome>
                 <S.ButtonHeader param='/browse'>Catalog</S.ButtonHeader>
-                <S.ButtonHeader param='/login'>Sign In</S.ButtonHeader>
-            </Header>
+                {props.user?.token
+                    ?
+                    <div style={{ display: 'flex', flexDirection: 'row' }}>
+                        <img onClick={() => { navigate('/YourAccount') }} src={profilepic} alt={props.user.user.name} style={{ width: '2em', height: 'auto', marginRight: '1.3em', cursor: 'pointer' }} />
+                        <S.ButtonHeader func={logOut}>Click to Sign Off</S.ButtonHeader>
+                    </div>
+                    : <S.ButtonHeader param='/login'>Sign In</S.ButtonHeader>
+                }            </Header>
 
             <S.GetStartedSection>
                 <AbsoluteBackgroundImage />
@@ -48,7 +64,7 @@ const Home = () => {
                         </S.FieldWrapper>
 
                         <S.ButtonWrapper>
-                            <S.ButtonGetStarted param='/YourAccount'>Get Started <S.SvgArrow src={greaterthan} /> </S.ButtonGetStarted>
+                            <S.ButtonGetStarted param='/'>Get Started <S.SvgArrow src={greaterthan} /> </S.ButtonGetStarted>
                         </S.ButtonWrapper>
                     </S.MailSection>
                 </S.CardText>
@@ -59,4 +75,6 @@ const Home = () => {
     )
 }
 
-export default Home;
+export default connect((store) => ({
+    user: store.authedUser
+}))(Home);

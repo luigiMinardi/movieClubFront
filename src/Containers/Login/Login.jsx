@@ -23,7 +23,6 @@ const Login = (props) => {
 
     const handleInputData = (e) => {
         setInputData({ ...inputData, [e.target.name]: e.target.value })
-        console.log(inputData)
     }
 
     const login = async () => {

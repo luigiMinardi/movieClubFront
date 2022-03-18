@@ -12,19 +12,19 @@ import Footer from "../../Components/Footer";
 import Field from "../../Components/Field";
 import Button from "../../Components/Button";
 
-let defaultData
-
 const Account = (props) => {
 
+    const [defaultData, setDefaultData] = useState({});
+
     useEffect(() => {
-        defaultData = {
+        setDefaultData({
             name: props.authedUser.user.name,
             surname: props.authedUser.user.surname,
             age: props.authedUser.user.age,
             email: props.authedUser.user.email,
             nickname: props.authedUser.user.nickname
-        }
-    }, [])
+        });
+    }, []);
 
     let navigate = useNavigate();
 
