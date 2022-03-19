@@ -51,6 +51,64 @@ const Browse = (props) => {
         props.dispatch({ type: LOGOUT });
     }
 
+    // Carousel
+    const [activeIndex, setActiveIndex] = useState(0);
+
+    let maxIndex = 4;
+
+    const updateIndicators = (index) => {
+        const indicators = document.querySelectorAll(".indicator");
+
+        indicators.forEach((indicator) => {
+            indicator.classList.remove("active");
+        });
+        console.log('indicators index', activeIndex)
+        let newActiveIndicator = indicators[activeIndex];
+        newActiveIndicator.classList.add("active");
+    }
+    // if (element.offsetWidth + element.scrollLeft >= element.scrollWidth) { console.log("we are at the end")}
+
+
+    const move = (e, direction) => {
+        const slider = document.querySelector("#slider");
+        let movieWidth = document.querySelector(".movie").getBoundingClientRect().width;
+        let scrollDistance = movieWidth * 6; // Scroll the length of 6 movies. //TODO: make work for mobile because (4 movies/page instead of 6)
+        // console.log(`movieWidth = ${movieWidth}`);
+        // console.log(`scrolling right ${scrollDistance}`);
+        console.log(activeIndex, "before")
+        if (direction === 'right' && activeIndex === maxIndex - 1) {
+            console.log("in the end it doesn't even matter")
+            slider.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: "smooth",
+            })
+            setActiveIndex(0);
+            updateIndicators(activeIndex);
+        } else if (direction === 'left' && activeIndex === 0) {
+            console.log("in the start it doesn't even matter")
+            slider.scrollTo({
+                top: 0,
+                left: slider.scrollWidth,
+                behavior: "smooth",
+            })
+            setActiveIndex(maxIndex - 1);
+            updateIndicators(activeIndex);
+        } else {
+            slider.scrollBy({
+                top: 0,
+                left: direction === 'right' ? +scrollDistance : -scrollDistance,
+                behavior: "smooth",
+            });
+            let updater = (direction === 'right' && direction) ? (activeIndex + 1) % maxIndex : (activeIndex - 1) % maxIndex;
+            setActiveIndex(updater)
+            console.log('up', updater)
+            updateIndicators(activeIndex);
+        }
+        console.log('index', activeIndex);
+    };
+
+
     return (
         <>
             <Header>
@@ -66,17 +124,18 @@ const Browse = (props) => {
             </Header>
 
             <S.Container>
-                <S.NavigateButton type='button' id='moveLeft'>◀</S.NavigateButton>
+                <S.NavigateButton type='button' id='moveLeft' onClick={(e) => move(e, 'left')}>◀</S.NavigateButton>
                 <S.Indicators>
-                    <S.Indicator active={true} index='0'></S.Indicator>
-                    <S.Indicator active={false} index='1'></S.Indicator>
-                    <S.Indicator active={false} index='2'></S.Indicator>
+                    <S.Indicator className='indicator' active={true} index='0'></S.Indicator>
+                    <S.Indicator className='indicator' active={false} index='1'></S.Indicator>
+                    <S.Indicator className='indicator' active={false} index='2'></S.Indicator>
+                    <S.Indicator className='indicator' active={false} index='3'></S.Indicator>
                 </S.Indicators>
                 <S.Slider id='slider'>
                     {movies[0]?.id
                         ? movies.map(movie => {
                             return (
-                                <S.Movie key={movie.id} id={movie.id}>
+                                <S.Movie key={movie.id} id={movie.id} className='movie'>
                                     <S.Banner src={baseImageURL + movie.poster_path} alt={movie.title} />
                                     <S.Description onClick={(e) => selectMovie(e, movie)}>
                                         <S.Buttons>
@@ -105,20 +164,8 @@ const Browse = (props) => {
                         : <div>Loading...</div>
                     }
                 </S.Slider>
-                <S.NavigateButton type='button' id='moveRight' className='btn-nav'>▶</S.NavigateButton>
+                <S.NavigateButton type='button' id='moveRight' onClick={(e) => move(e, 'right')}>▶</S.NavigateButton>
             </S.Container>
-
-            {/* {movies[0]?.id
-                ? movies.map(movie => {
-                    return (
-                        <div key={movie.id} onClick={() => selectMovie(movie)}>
-                            <img src={baseImageURL + movie.poster_path} alt={movie.title} />
-                            <p>{movie.overview}</p>
-                        </div>
-                    )
-                })
-                : <div>Loading...</div>
-            } */}
 
             <Footer pt='4.375em' pr='2.8em' pl='2.8em' margin='0 auto' maxWidth='62.5rem' title="Questions? Make a Issue" />
         </>

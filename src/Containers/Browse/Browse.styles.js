@@ -79,7 +79,7 @@ export const Slider = styled.div`
     padding-bottom: ${sliderPy};
 
     ::-webkit-scrollbar {
-        display: none;
+        /* display: none; */
     }
 `
 
