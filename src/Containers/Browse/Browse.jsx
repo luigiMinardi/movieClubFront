@@ -37,12 +37,14 @@ const Browse = (props) => {
         }
     }
 
-    const selectMovie = (movie) => {
-        console.log(movie);
-
-        props.dispatch({ type: MOVIE_INFO, payload: movie });
-
-        navigate('/detail')
+    const selectMovie = (e, movie) => {
+        if (!e.target.className.includes('action')) {
+            console.log(movie);
+            props.dispatch({ type: MOVIE_INFO, payload: movie });
+            navigate('/detail')
+        } else {
+            console.log('action')
+        }
     }
 
     const logOut = () => {
@@ -63,7 +65,50 @@ const Browse = (props) => {
                 }
             </Header>
 
-            {movies[0]?.id
+            <S.Container>
+                <S.NavigateButton type='button' id='moveLeft'>◀</S.NavigateButton>
+                <S.Indicators>
+                    <S.Indicator active={true} index='0'></S.Indicator>
+                    <S.Indicator active={false} index='1'></S.Indicator>
+                    <S.Indicator active={false} index='2'></S.Indicator>
+                </S.Indicators>
+                <S.Slider id='slider'>
+                    {movies[0]?.id
+                        ? movies.map(movie => {
+                            return (
+                                <S.Movie key={movie.id} id={movie.id}>
+                                    <S.Banner src={baseImageURL + movie.poster_path} alt={movie.title} />
+                                    <S.Description onClick={(e) => selectMovie(e, movie)}>
+                                        <S.Buttons>
+                                            <S.MovieButton className='action'>▶</S.MovieButton>
+                                            <S.MovieButton className='action'>➕</S.MovieButton>
+                                            <S.MovieButton className='action'>👍</S.MovieButton>
+                                            <S.MovieButton className='action'>👎</S.MovieButton>
+                                            <S.MovieButton>🔻</S.MovieButton>
+                                        </S.Buttons>
+                                        <S.Data>
+                                            <S.Match>87% Match</S.Match>
+                                            <S.Rating>12+</S.Rating>
+                                            <span>1h 47m</span>
+                                        </S.Data>
+                                        <S.Type>
+                                            <span>Explosive</span>
+                                            <S.Middot>&middot;</S.Middot>
+                                            <span>Exciting</span>
+                                            <S.Middot>&middot;</S.Middot>
+                                            <span>Family</span>
+                                        </S.Type>
+                                    </S.Description>
+                                </S.Movie>
+                            )
+                        })
+                        : <div>Loading...</div>
+                    }
+                </S.Slider>
+                <S.NavigateButton type='button' id='moveRight' className='btn-nav'>▶</S.NavigateButton>
+            </S.Container>
+
+            {/* {movies[0]?.id
                 ? movies.map(movie => {
                     return (
                         <div key={movie.id} onClick={() => selectMovie(movie)}>
@@ -73,7 +118,7 @@ const Browse = (props) => {
                     )
                 })
                 : <div>Loading...</div>
-            }
+            } */}
 
             <Footer pt='4.375em' pr='2.8em' pl='2.8em' margin='0 auto' maxWidth='62.5rem' title="Questions? Make a Issue" />
         </>
