@@ -54,28 +54,17 @@ const Browse = (props) => {
     // Carousel
     const [activeIndex, setActiveIndex] = useState(0);
 
-    let maxIndex = 4;
+    let scrollLength = 6; // Number of movies displayed on screen
+    const maxIndex = Math.ceil(movies.length / scrollLength); // Number of pages on the carousel
 
-    const updateIndicators = (index) => {
-        const indicators = document.querySelectorAll(".indicator");
-
-        indicators.forEach((indicator) => {
-            indicator.classList.remove("active");
-        });
-        console.log('indicators index', activeIndex)
-        let newActiveIndicator = indicators[activeIndex];
-        newActiveIndicator.classList.add("active");
-    }
     // if (element.offsetWidth + element.scrollLeft >= element.scrollWidth) { console.log("we are at the end")}
 
-
     const move = (e, direction) => {
-        const slider = document.querySelector("#slider");
+        const slider = e.target.offsetParent.children[3]; // From NavigateButton (target), go to Parent (Container) and pick 4th child (Slider)
         let movieWidth = document.querySelector(".movie").getBoundingClientRect().width;
         let scrollDistance = movieWidth * 6; // Scroll the length of 6 movies. //TODO: make work for mobile because (4 movies/page instead of 6)
         // console.log(`movieWidth = ${movieWidth}`);
         // console.log(`scrolling right ${scrollDistance}`);
-        console.log(activeIndex, "before")
         if (direction === 'right' && activeIndex === maxIndex - 1) {
             console.log("in the end it doesn't even matter")
             slider.scrollTo({
@@ -84,7 +73,6 @@ const Browse = (props) => {
                 behavior: "smooth",
             })
             setActiveIndex(0);
-            updateIndicators(activeIndex);
         } else if (direction === 'left' && activeIndex === 0) {
             console.log("in the start it doesn't even matter")
             slider.scrollTo({
@@ -93,7 +81,6 @@ const Browse = (props) => {
                 behavior: "smooth",
             })
             setActiveIndex(maxIndex - 1);
-            updateIndicators(activeIndex);
         } else {
             slider.scrollBy({
                 top: 0,
@@ -102,10 +89,9 @@ const Browse = (props) => {
             });
             let updater = (direction === 'right' && direction) ? (activeIndex + 1) % maxIndex : (activeIndex - 1) % maxIndex;
             setActiveIndex(updater)
-            console.log('up', updater)
-            updateIndicators(activeIndex);
+            // console.log('up', updater)
         }
-        console.log('index', activeIndex);
+        // console.log('index', activeIndex);
     };
 
 
@@ -124,14 +110,26 @@ const Browse = (props) => {
             </Header>
 
             <S.Container>
-                <S.NavigateButton type='button' id='moveLeft' onClick={(e) => move(e, 'left')}>◀</S.NavigateButton>
+                <S.Title>Foo</S.Title>
+                <S.NavigateButton
+                    type='button'
+                    id='moveLeft'
+                    onClick={(e) => {
+                        if (e.detail === 1) { move(e, 'left') }
+                        if (e.detail !== 1 && activeIndex !== 0) { move(e, 'left') }
+                        if (e.detail > maxIndex && activeIndex === 0) { alert("cooldown dude") }
+                    }}
+                >◀</S.NavigateButton>
                 <S.Indicators>
-                    <S.Indicator className='indicator' active={true} index='0'></S.Indicator>
-                    <S.Indicator className='indicator' active={false} index='1'></S.Indicator>
-                    <S.Indicator className='indicator' active={false} index='2'></S.Indicator>
-                    <S.Indicator className='indicator' active={false} index='3'></S.Indicator>
+                    {
+                        [...Array(maxIndex).keys()].map(indicator => {
+                            return (
+                                <S.Indicator key={indicator} className='indicator' active={activeIndex} index={indicator}></S.Indicator>
+                            )
+                        })
+                    }
                 </S.Indicators>
-                <S.Slider id='slider'>
+                <S.Slider>
                     {movies[0]?.id
                         ? movies.map(movie => {
                             return (
@@ -164,7 +162,79 @@ const Browse = (props) => {
                         : <div>Loading...</div>
                     }
                 </S.Slider>
-                <S.NavigateButton type='button' id='moveRight' onClick={(e) => move(e, 'right')}>▶</S.NavigateButton>
+                <S.NavigateButton
+                    type='button'
+                    id='moveRight'
+                    onClick={(e) => {
+                        if (e.detail === 1) { move(e, 'right') }
+                        if (e.detail !== 1 && activeIndex !== maxIndex - 1) { move(e, 'right') }
+                        if (e.detail > maxIndex && activeIndex === maxIndex - 1) { alert("cooldown dude") }
+                    }}
+                >▶</S.NavigateButton>
+            </S.Container>
+
+            <S.Container>
+                <S.Title>Bar</S.Title>
+                <S.NavigateButton
+                    type='button'
+                    id='moveLeft'
+                    onClick={(e) => {
+                        if (e.detail === 1) { move(e, 'left') }
+                        if (e.detail !== 1 && activeIndex !== 0) { move(e, 'left') }
+                        if (e.detail > maxIndex && activeIndex === 0) { alert("cooldown dude") }
+                    }}
+                >◀</S.NavigateButton>
+                <S.Indicators>
+                    {
+                        [...Array(maxIndex).keys()].map(indicator => {
+                            return (
+                                <S.Indicator key={indicator} className='indicator' active={activeIndex} index={indicator}></S.Indicator>
+                            )
+                        })
+                    }
+                </S.Indicators>
+                <S.Slider>
+                    {movies[0]?.id
+                        ? movies.map(movie => {
+                            return (
+                                <S.Movie key={movie.id} id={movie.id} className='movie'>
+                                    <S.Banner src={baseImageURL + movie.poster_path} alt={movie.title} />
+                                    <S.Description onClick={(e) => selectMovie(e, movie)}>
+                                        <S.Buttons>
+                                            <S.MovieButton className='action'>▶</S.MovieButton>
+                                            <S.MovieButton className='action'>➕</S.MovieButton>
+                                            <S.MovieButton className='action'>👍</S.MovieButton>
+                                            <S.MovieButton className='action'>👎</S.MovieButton>
+                                            <S.MovieButton>🔻</S.MovieButton>
+                                        </S.Buttons>
+                                        <S.Data>
+                                            <S.Match>87% Match</S.Match>
+                                            <S.Rating>12+</S.Rating>
+                                            <span>1h 47m</span>
+                                        </S.Data>
+                                        <S.Type>
+                                            <span>Explosive</span>
+                                            <S.Middot>&middot;</S.Middot>
+                                            <span>Exciting</span>
+                                            <S.Middot>&middot;</S.Middot>
+                                            <span>Family</span>
+                                        </S.Type>
+                                    </S.Description>
+                                </S.Movie>
+                            )
+                        })
+                        : <div>Loading...</div>
+                    }
+                </S.Slider>
+                <S.NavigateButton
+                    type='button'
+                    id='moveRight'
+                    onClick={(e) => {
+                        if (e.detail === 1) { move(e, 'right') }
+                        if (e.detail !== 1 && activeIndex !== maxIndex - 1) { move(e, 'right') }
+                        if (e.detail > maxIndex && activeIndex === maxIndex - 1) { alert("cooldown dude") }
+                    }}
+                >▶</S.NavigateButton>
             </S.Container>
 
             <Footer pt='4.375em' pr='2.8em' pl='2.8em' margin='0 auto' maxWidth='62.5rem' title="Questions? Make a Issue" />

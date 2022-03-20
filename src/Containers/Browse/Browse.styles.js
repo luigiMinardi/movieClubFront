@@ -26,7 +26,7 @@ export const NavigateButton = styled.button`
     border-radius: .312em;
     position: absolute;
     bottom: 0;
-    top: 0;
+    top: calc(${sliderPy} / 3);
     background-color: ${colorDot3()};
     color: ${white};
     z-index: 3;
@@ -53,7 +53,7 @@ export const Indicator = styled.div`
     width: .938em;
     height: .125em;
     margin-left: .125rem;
-    background-color: ${props => props.active ? white : gray};
+    background-color: ${props => props.active == props.index ? white : gray};
     display: inline-block;
 
     :nth-of-type(1) {
@@ -67,6 +67,15 @@ export const Container = styled.section`
     :hover ${NavigateButton}, :hover ${Indicators} {
         visibility: visible;
     }
+
+    :not(:nth-of-type(1)) {
+        margin-top: -10%;
+    }
+`
+
+export const Title = styled.span`
+    font-size: x-large;
+    margin-left: ${arrowWidth};
 `
 
 export const Slider = styled.div`
@@ -79,7 +88,7 @@ export const Slider = styled.div`
     padding-bottom: ${sliderPy};
 
     ::-webkit-scrollbar {
-        /* display: none; */
+        display: none;
     }
 `
 
@@ -92,15 +101,18 @@ export const Banner = styled.img`
 
 export const Description = styled.section`
     position: absolute;
-    display: none;
-    /* z-index: 9999; */
-    background-color: ${darkerGray};
     width: ${movieWidth};
+    
+    box-sizing: border-box;
     margin-top: -.625em;
     padding: .625em;
     border-radius: 0 0 .625em .625em;
 
-    box-sizing: border-box;
+    background-color: ${darkerGray};
+
+    visibility: hidden;
+    display: none;
+    transition: visibility 1s ease-out;
 `
 
 export const Movie = styled.div`
@@ -122,9 +134,36 @@ export const Movie = styled.div`
     }
     :hover > ${Description} {
         display: block;
+        animation: transform_show_from_right .8s;
+        animation-delay: 100ms;
+        animation-fill-mode: forwards;
     }
     :hover > ${Banner} {
         border-radius: .625em .625em 0 0;
+    }
+    @media (max-width: 950px) {
+        :hover, :hover > ${Description} {
+            width: 50vw;
+        }
+    }
+
+    @keyframes transform_show_from_right {
+        0% {
+            transform: scale(0);
+            right: 100rem;
+        }
+        1%{
+            visibility: visible;
+        }
+
+        95%{
+            right: .2em;
+        }
+        100%{
+            transform: scale(1);
+            right: initial;
+            visibility: visible;
+        }
     }
 `
 
