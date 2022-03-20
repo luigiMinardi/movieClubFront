@@ -98,12 +98,12 @@ const Browse = (props) => {
     return (
         <>
             <Header>
-                <S.ButtonHeader disabled={true}>Languages</S.ButtonHeader>
+                <S.ButtonHeader disabled={true}>Search</S.ButtonHeader>
                 {props.user?.token
                     ?
                     <div style={{ display: 'flex', flexDirection: 'row' }}>
                         <img onClick={() => { navigate('/YourAccount') }} src={profilepic} alt={props.user.user.name} style={{ width: '2em', height: 'auto', marginRight: '1.3em', cursor: 'pointer' }} />
-                        <S.ButtonHeader func={logOut}>Click to Sign Off</S.ButtonHeader>
+                        <S.ButtonHeader func={logOut}>Sign Off</S.ButtonHeader>
                     </div>
                     : <S.ButtonHeader param='/login'>Sign In</S.ButtonHeader>
                 }

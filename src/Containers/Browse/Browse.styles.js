@@ -69,7 +69,23 @@ export const Container = styled.section`
     }
 
     :not(:nth-of-type(1)) {
-        margin-top: -10%;
+        margin-top: -25%;
+    }
+    
+    @media (min-width: 550px) {
+        :not(:nth-of-type(1)) {
+            margin-top: -15%;
+        }
+    }
+    @media (min-width: 950px) {
+        :not(:nth-of-type(1)) {
+            margin-top: -10%;
+        }
+    }
+    @media (min-width: 1450px) {
+        :not(:nth-of-type(1)) {
+            margin-top: -5%;
+        }
     }
 `
 

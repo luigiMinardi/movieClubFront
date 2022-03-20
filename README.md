@@ -5,17 +5,19 @@
 * [ ] - Browse
   * [ ] - Carousel
     * [x] - CSS, HTML
-    * [ ] - JS
+    * [x] - JS
+    * [ ] - Refactor to Component (Solve Bug, Medium Important)
     * [ ] - Add Categories to Backend and update front (Less Important) 
   * [ ] - Detail, refactor to be a modal (Non important)
     * [ ] - Detail CSS
 
-* [ ] - Register
-* [ ] - User Watched list (Orders)
-* [ ] - Admin Orders
-* [ ] - User do Orders
-* [ ] - Admin viewpoint
-* [ ] - Search Movie
+* [ ] - Register (Important)
+* [ ] - Admin Orders (Important)
+* [ ] - User do Orders (Important)
+* [ ] - Search Movie (Important)
+
+* [ ] - Admin viewpoint (Delete and etc, less important)
+* [ ] - User Watched list (Orders, Non Important)
 
 * [ ] - Search Genre [Categorie] (Less Important)
   * [ ] - Optional Search Author (Non Important)
