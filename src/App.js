@@ -4,6 +4,7 @@ import Browse from './Containers/Browse';
 import Detail from './Containers/Detail/Detail';
 import Home from './Containers/Home';
 import Login from './Containers/Login';
+import Register from './Containers/Register';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/signup' element={<Register />} />
         <Route path='/YourAccount' element={<Account />} />
         <Route path='/browse' element={<Browse />} />
         <Route path='/detail' element={<Detail />} />

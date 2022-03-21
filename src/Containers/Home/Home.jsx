@@ -64,7 +64,7 @@ const Home = (props) => {
                         </S.FieldWrapper>
 
                         <S.ButtonWrapper>
-                            <S.ButtonGetStarted param='/'>Get Started <S.SvgArrow src={greaterthan} /> </S.ButtonGetStarted>
+                            <S.ButtonGetStarted param='/signup'>Get Started <S.SvgArrow src={greaterthan} /> </S.ButtonGetStarted>
                         </S.ButtonWrapper>
                     </S.MailSection>
                 </S.CardText>

@@ -7,7 +7,7 @@ import { LOGIN } from '../../redux/actions';
 import { baseURL } from '../../utils';
 
 import * as S from './Login.styles';
-import { colorDot8, darkGray, lightGray, white } from '../../styles/colors';
+import { colorDot8, darkGray, gray, lightGray, white } from '../../styles/colors';
 
 import AbsoluteBackgroundImage from '../../Components/AbsoluteBackgroundImage';
 import Header from '../../Components/Header';
@@ -113,6 +113,7 @@ const Login = (props) => {
                         </S.FieldWrapper>
                         <S.LoginButton func={login}>Login</S.LoginButton>
                         {errorResponse}
+                        <p style={{ color: gray, fontSize: 'large' }}>Not a member yet? <a style={{ color: white, cursor: 'pointer' }} onClick={() => navigate('/signup')} onMouseEnter={e => e.target.style.textDecoration = 'underline'} onMouseLeave={e => e.target.style.textDecoration = 'none'}>Sign up now.</a></p>
                     </S.SignInCard>
                 </S.SignInCardWrapper>
 

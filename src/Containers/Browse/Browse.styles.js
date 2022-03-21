@@ -53,7 +53,7 @@ export const Indicator = styled.div`
     width: .938em;
     height: .125em;
     margin-left: .125rem;
-    background-color: ${props => props.active == props.index ? white : gray};
+    background-color: ${props => props.active === props.index ? white : gray};
     display: inline-block;
 
     :nth-of-type(1) {
