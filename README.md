@@ -11,9 +11,9 @@
   * [ ] - Detail, refactor to be a modal (Non important)
     * [ ] - Detail CSS
 
-* [ ] - Register (Important)
-* [ ] - Admin Orders (Important)
-* [ ] - User do Orders (Important)
+* [x] - Register (Important)
+* [ ] - Admin See Orders (Important)
+* [x] - User do Orders (Important)
 * [ ] - Search Movie (Important)
 
 * [ ] - Admin viewpoint (Delete and etc, less important)

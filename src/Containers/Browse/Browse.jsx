@@ -18,6 +18,9 @@ const Browse = (props) => {
     let navigate = useNavigate();
     const componentMounted = useRef(true);
 
+    const [maxIndex, setMaxIndex] = useState(4)  // Number of pages on the carousel
+
+
     useEffect(async () => {
         let res = await getMovies();
         if (componentMounted.current) {
@@ -28,10 +31,11 @@ const Browse = (props) => {
         }
     }, []);
 
-    const getMovies = async () => {
+    const getMovies = async (endpoint = 'movies') => {
         try {
-            let res = await axios.get(`${baseURL}/movie-db/new`);
-            return res.data.results;
+            let res = await axios.get(`${baseURL}/${endpoint}`);
+            setMaxIndex(Math.ceil(movies.length / scrollLength));
+            return res.data;
         } catch (e) {
             console.log(e);
         }
@@ -39,7 +43,7 @@ const Browse = (props) => {
 
     const selectMovie = (e, movie) => {
         if (!e.target.className.includes('action')) {
-            console.log(movie);
+            // console.log(movie);
             props.dispatch({ type: MOVIE_INFO, payload: movie });
             navigate('/detail')
         } else {
@@ -55,10 +59,9 @@ const Browse = (props) => {
     const [activeIndex, setActiveIndex] = useState(0);
 
     let scrollLength = 6; // Number of movies displayed on screen
-    const maxIndex = Math.ceil(movies.length / scrollLength); // Number of pages on the carousel
 
     // if (element.offsetWidth + element.scrollLeft >= element.scrollWidth) { console.log("we are at the end")}
-
+    // console.log(maxIndex)
     const move = (e, direction) => {
         const slider = e.target.offsetParent.children[3]; // From NavigateButton (target), go to Parent (Container) and pick 4th child (Slider)
         let movieWidth = document.querySelector(".movie").getBoundingClientRect().width;
@@ -134,7 +137,7 @@ const Browse = (props) => {
                         ? movies.map(movie => {
                             return (
                                 <S.Movie key={movie.id} id={movie.id} className='movie'>
-                                    <S.Banner src={baseImageURL + movie.poster_path} alt={movie.title} />
+                                    <S.Banner src={movie.image} alt={movie.title} />
                                     <S.Description onClick={(e) => selectMovie(e, movie)}>
                                         <S.Buttons>
                                             <S.MovieButton className='action'>▶</S.MovieButton>
@@ -198,7 +201,7 @@ const Browse = (props) => {
                         ? movies.map(movie => {
                             return (
                                 <S.Movie key={movie.id} id={movie.id} className='movie'>
-                                    <S.Banner src={baseImageURL + movie.poster_path} alt={movie.title} />
+                                    <S.Banner src={movie.image} alt={movie.title} />
                                     <S.Description onClick={(e) => selectMovie(e, movie)}>
                                         <S.Buttons>
                                             <S.MovieButton className='action'>▶</S.MovieButton>

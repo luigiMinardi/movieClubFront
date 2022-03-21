@@ -42,7 +42,7 @@ export const NavigateButton = styled.button`
 `
 
 export const Indicators = styled.div`
-    width: 6.25em;
+    width: 20.25em;
     position: absolute;
     right: 0;
     top: 0;

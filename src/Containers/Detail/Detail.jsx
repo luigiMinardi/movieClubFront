@@ -5,8 +5,9 @@ import Header from '../../Components/Header';
 import Footer from '../../Components/Footer';
 import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { baseImageURL } from '../../utils';
+import { baseImageURL, baseURL } from '../../utils';
 import Button from '../../Components/Button';
+import axios from 'axios';
 
 const Detail = (props) => {
 
@@ -17,7 +18,30 @@ const Detail = (props) => {
             navigate('/browse');
         }
     })
+    // console.log(props.detail)
 
+    const rent = async (movieId, token, userId) => {
+        let body = {
+            price: 5,
+            movieId: movieId,
+            userId: userId,
+            date: Date.now()
+        };
+
+        let config = {
+            headers: { Authorization: `Bearer ${token}` }
+        };
+
+        try {
+            let res = await axios.post(`${baseURL}/orders`, body, config)
+            if (res.status === 200) {
+                console.log(res.data)
+                navigate('/browse')
+            }
+        } catch (e) {
+            console.log(e);
+        }
+    }
     return (
         <>
             <Header>
@@ -28,17 +52,17 @@ const Detail = (props) => {
 
                 <h1>{props.detail?.title}</h1>
                 <p style={{ paddingInline: '1.5em' }}>{props.detail?.overview}</p>
-                <img src={baseImageURL + props.detail.poster_path} alt={props.detail.title} />
+                <img src={props.detail.image} alt={props.detail.title} />
                 <>
                     {props.authedUser.token &&
-                        <Button func={() => console.log('Rented')}>
+                        <Button func={rent} param={[props.detail.id, props.authedUser.token, props.authedUser.user.id]}>
                             Rent
                         </Button>
                     }
                 </>
             </div>
 
-            <Footer 
+            <Footer
                 pt='4.375em'
                 pr='2.8em'
                 pl='2.8em'
