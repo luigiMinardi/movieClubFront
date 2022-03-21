@@ -15,7 +15,6 @@ const Field = (props) => {
             return func(e)
         }
     }
-
     return (
         <S.Field {...props} id={undefined} type={undefined} name={undefined} autoComplete={undefined} maxLength={undefined} minLength={undefined} >
             <S.Input
@@ -31,6 +30,7 @@ const Field = (props) => {
             >
                 {props.label}
             </S.Label>
+            <span style={{ position: 'absolute', right: '-150%', top: '25%' }}>{props.error}</span>
         </S.Field>
     )
 }
