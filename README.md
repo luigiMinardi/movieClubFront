@@ -12,8 +12,9 @@
     * [ ] - Detail CSS
 
 * [x] - Register (Important)
-* [ ] - Admin See Orders (Important)
+* [x] - Admin See Orders (Important)
 * [x] - User do Orders (Important)
+* [x] - User see own Orders (Important)
 * [ ] - Search Movie (Important)
 
 * [ ] - Admin viewpoint (Delete and etc, less important)
