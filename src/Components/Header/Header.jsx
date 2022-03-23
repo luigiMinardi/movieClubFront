@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import xilften from '../../assets/images/xilften.png';
 import netflix from '../../assets/images/netflix.png';
 import * as S from './Header.styles';
+import Button from "../Button";
+import { connect } from "react-redux";
 
 const Header = (props) => {
     const [amILeft, setAmILeft] = useState(false);
@@ -43,10 +45,17 @@ const Header = (props) => {
             </S.LogoWrapper>
 
             <S.HeaderContainer>
-                {props.children}
-            </S.HeaderContainer>
-        </S.Header>
+                {props?.user?.isAdmin && <>
+                    <Button param='/admin'>Admin</Button>
+                    <div style={{paddingRight: '1.5em'}}></div>
+                </>
+                }
+            {props.children}
+        </S.HeaderContainer>
+        </S.Header >
     )
 }
 
-export default Header;
+export default connect((store) => ({
+    user: store.authedUser.user
+}))(Header);
