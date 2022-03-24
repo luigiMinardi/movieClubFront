@@ -133,7 +133,7 @@ const Browse = (props) => {
                     }
                 </S.Indicators>
                 <S.Slider>
-                    {movies[0]?.id
+                    {movies && movies[0]?.id
                         ? movies.map(movie => {
                             return (
                                 <S.Movie key={movie.id} id={movie.id} className='movie'>
@@ -197,7 +197,7 @@ const Browse = (props) => {
                     }
                 </S.Indicators>
                 <S.Slider>
-                    {movies[0]?.id
+                    {movies && movies[0]?.id
                         ? movies.map(movie => {
                             return (
                                 <S.Movie key={movie.id} id={movie.id} className='movie'>
