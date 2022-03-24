@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import * as S from './Home.styles';
 import greaterthan from '../../assets/images/greaterthan.svg';
 import profilepic from '../../assets/images/profilepic.png';
-import { white } from '../../styles/colors';
+import { black, white } from '../../styles/colors';
 
 import AbsoluteBackgroundImage from '../../Components/AbsoluteBackgroundImage';
 import Header from '../../Components/Header';
@@ -53,6 +53,7 @@ const Home = (props) => {
                                 label='Email Adress'
 
                                 bg={white}
+                                inputColor={black}
 
                                 w='90vw'
                                 w550='65vw'
