@@ -19,7 +19,6 @@ let movieHeigh = '12.5em'
 let arrowWidth = '3.125rem'
 let sliderPy = '9rem'
 
-
 export const NavigateButton = styled.button`
     width: ${arrowWidth};
     height: ${movieHeigh};
@@ -71,7 +70,7 @@ export const Container = styled.section`
     :not(:nth-of-type(1)) {
         margin-top: -25%;
     }
-    
+
     @media (min-width: 550px) {
         :not(:nth-of-type(1)) {
             margin-top: -15%;
@@ -118,7 +117,7 @@ export const Banner = styled.img`
 export const Description = styled.section`
     position: absolute;
     width: ${movieWidth};
-    
+
     box-sizing: border-box;
     margin-top: -.625em;
     padding: .625em;
@@ -244,7 +243,7 @@ export const Type = styled.span`
         align-items: center;
 `
 
-export const Middot = styled.span`
+export const MidDot = styled.span`
     font-size: x-large;
     color: ${gray};
     font-weight: bold;

@@ -15,7 +15,7 @@ const Header = (props) => {
         navigate('/');
     }
 
-    const checkifIsLeft = (e) => {
+    const checkIfIsLeft = (e) => {
         // console.log(e.detail) // TODO: Use e.detail to auto animate the logo on double click, onclick go to wherever you want.
         let wrapper = document.getElementById('wrapper').getBoundingClientRect();
         // wrapper.left is the same as getElementById('wrapper').offSetLeft and the same goes to width.
@@ -31,7 +31,7 @@ const Header = (props) => {
         <S.Header>
             <S.LogoWrapper
                 id='wrapper'
-                onMouseEnter={checkifIsLeft}
+                onMouseEnter={checkIfIsLeft}
                 isLeft={amILeft}
             >
                 <S.LogoFlipper>
@@ -57,5 +57,5 @@ const Header = (props) => {
 }
 
 export default connect((store) => ({
-    user: store.authedUser.user
+    user: store.authenticatedUser.user
 }))(Header);

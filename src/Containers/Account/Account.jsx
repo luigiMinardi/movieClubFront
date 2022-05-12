@@ -24,13 +24,14 @@ const Account = (props) => {
     const [defaultData, setDefaultData] = useState({});
     const componentMounted = useRef(true);
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(async () => {
         setDefaultData({
-            name: props.authedUser.user.name,
-            surname: props.authedUser.user.surname,
-            age: props.authedUser.user.age,
-            email: props.authedUser.user.email,
-            nickname: props.authedUser.user.nickname
+            name: props.authenticatedUser.user.name,
+            surname: props.authenticatedUser.user.surname,
+            age: props.authenticatedUser.user.age,
+            email: props.authenticatedUser.user.email,
+            nickname: props.authenticatedUser.user.nickname
         });
 
         let res = await getOrders();
@@ -40,12 +41,13 @@ const Account = (props) => {
         return () => {
             componentMounted.current = false;
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const getOrders = async () => {
         try {
             let config = {
-                headers: { Authorization: `Bearer ${props.authedUser.token}` }
+                headers: { Authorization: `Bearer ${props.authenticatedUser.token}` }
             };
             let res = await axios.get(`${baseURL}/orders/user`, config);
 
@@ -62,11 +64,11 @@ const Account = (props) => {
     }
 
     const [userData, setUserData] = useState({
-        name: props.authedUser.user.name,
-        surname: props.authedUser.user.surname,
-        age: props.authedUser.user.age,
-        email: props.authedUser.user.email,
-        nickname: props.authedUser.user.nickname
+        name: props.authenticatedUser.user.name,
+        surname: props.authenticatedUser.user.surname,
+        age: props.authenticatedUser.user.age,
+        email: props.authenticatedUser.user.email,
+        nickname: props.authenticatedUser.user.nickname
     });
 
     const handleUserData = (e) => {
@@ -80,7 +82,7 @@ const Account = (props) => {
     }
 
     useEffect(() => {
-        if (props.authedUser.token === '') {
+        if (props.authenticatedUser.token === '') {
             navigate('/login');
         }
     });
@@ -98,11 +100,11 @@ const Account = (props) => {
         }
 
         let config = {
-            headers: { Authorization: `Bearer ${props.authedUser.token}` }
+            headers: { Authorization: `Bearer ${props.authenticatedUser.token}` }
         };
 
         try {
-            let res = await axios.put(`${baseURL}/users/${props.authedUser.user.id}`, body, config);
+            await axios.put(`${baseURL}/users/${props.authenticatedUser.user.id}`, body, config);
 
             // if (res) {
             // TODO: CHANGE BACKEND RES TO RETURN A RES.DATA WITH THE NEW USER DATA.
@@ -115,10 +117,10 @@ const Account = (props) => {
         <>
             <Header >
                 <S.ButtonHeader param='/browse'>Catalog</S.ButtonHeader>
-                {props.authedUser?.token
+                {props.authenticatedUser?.token
                     ?
                     <div style={{ display: 'flex', flexDirection: 'row' }}>
-                        <img onClick={() => { navigate('/YourAccount') }} src={profilepic} alt={props.authedUser.user.name} style={{ width: '2em', height: 'auto', marginRight: '1.3em', cursor: 'pointer' }} />
+                        <img onClick={() => { navigate('/YourAccount') }} src={profilepic} alt={props.authenticatedUser.user.name} style={{ width: '2em', height: 'auto', marginRight: '1.3em', cursor: 'pointer' }} />
                         <S.ButtonHeader func={logOut}>Sign Off</S.ButtonHeader>
                     </div>
                     : <S.ButtonHeader param='/login'>Sign In</S.ButtonHeader>
@@ -128,7 +130,7 @@ const Account = (props) => {
                 <section style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
                     <S.Title style={{ alignSelf: 'flex-start' }}>Change Your data</S.Title>
                     <Field
-                        label={`Name: ${props.authedUser.user.name}`}
+                        label={`Name: ${props.authenticatedUser.user.name}`}
                         id='name'
                         type='text'
                         name='name'
@@ -137,7 +139,7 @@ const Account = (props) => {
                         inputColor='black'
                     />
                     <Field
-                        label={`Surname: ${props.authedUser.user.surname}`}
+                        label={`Surname: ${props.authenticatedUser.user.surname}`}
                         id='surname'
                         type='text'
                         name='surname'
@@ -146,7 +148,7 @@ const Account = (props) => {
                         inputColor='black'
                     />
                     <Field
-                        label={`Nickname: ${props.authedUser.user.nickname}`}
+                        label={`Nickname: ${props.authenticatedUser.user.nickname}`}
                         id='nickname'
                         type='text'
                         name='nickname'
@@ -155,7 +157,7 @@ const Account = (props) => {
                         inputColor='black'
                     />
                     <Field
-                        label={`Email: ${props.authedUser.user.email}`}
+                        label={`Email: ${props.authenticatedUser.user.email}`}
                         id='email'
                         type='email'
                         name='email'
@@ -180,10 +182,8 @@ const Account = (props) => {
                         {orders && orders.map(order => {
                             if (mapI < orders.length - 1) {
                                 mapI++
-                                // console.log('ampi', mapI)
                             } else {
                                 mapI = 0
-                                // console.log('anmpi', mapI)
                             }
                             return (
                                 <S.Movie key={order.id} id={order.id}>
@@ -199,9 +199,9 @@ const Account = (props) => {
                                         <span>{movies[mapI].date}</span>
                                         <S.Type>
                                             <span>Explosive</span>
-                                            <S.Middot>&middot;</S.Middot>
+                                            <S.MidDot>&middot;</S.MidDot>
                                             <span>Exciting</span>
-                                            <S.Middot>&middot;</S.Middot>
+                                            <S.MidDot>&middot;</S.MidDot>
                                             <span>Family</span>
                                         </S.Type>
                                     </S.Description>
@@ -218,5 +218,5 @@ const Account = (props) => {
 }
 
 export default connect((state) => ({
-    authedUser: state.authedUser
+    authenticatedUser: state.authenticatedUser
 }))(Account);

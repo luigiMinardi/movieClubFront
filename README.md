@@ -2,7 +2,7 @@
 
 THIS PROJECT USE IMAGES AND NAMES OWNED BY [NETFLIX](https://www.netflix.com/) AND [THE MOVIE DATABASE](https://www.themoviedb.org/documentation/api) (PROVIDES THE DATA OF THE MOVIES).
 
-I DO **NOT** OWN ANY IMAGE OR NAME OF THIS APLICATION. THIS PROJECT IS PROVIDED AT IT IS AND IS JUST AND **ONLY** TO TEST AND IMPROVE MY OWN ABILITIES WITH REACT, REDUX AND CSS (STYLED COMPONENTS). IF YOU WAN'T TO CLONE THIS REPO DO **NOT** USE THE IMAGES NOR NAMES WITHOUT PERMISSION OF THE OWNERS. IF YOU ARE NETFLIX, I'M SEARCHING FOR A JOB.
+I DO **NOT** OWN ANY IMAGE OR NAME OF THIS APPLICATION. THIS PROJECT IS PROVIDED AT IT IS AND IS JUST AND **ONLY** TO TEST AND IMPROVE MY OWN ABILITIES WITH REACT, REDUX AND CSS (STYLED COMPONENTS). IF YOU WAN'T TO CLONE THIS REPO DO **NOT** USE THE IMAGES NOR NAMES WITHOUT PERMISSION OF THE OWNERS. IF YOU ARE NETFLIX, I'M SEARCHING FOR A JOB.
 
 
 # 🎬 Xilften, the movie club that is definitely not a copy of Netflix.
@@ -30,7 +30,7 @@ Click [here](https://main.dcsclqrcr3v78.amplifyapp.com) or in the image below to
 
 If you hover your mouse in the Xilften logo it will hover accordingly to the side that you hovered (left or right).
 
-The input has an animation that puts the label to the top when fucussed.
+The input has an animation that puts the label to the top when focussed.
 
 The carousel is infinite from both sides, has an animation on hover, and if you click on the description you go to the rent page.
 
@@ -64,7 +64,7 @@ Everything be responsive and made mobile-first. (Under development right now)
 * [ ] - Admin viewpoint (Delete and etc, less important)
 
 #### Functionalities
-* [ ] - Search Genre [Categorie] (Less Important)
+* [ ] - Search Genre [Category] (Less Important)
   * [ ] - Optional Search Author (Non Important)
 * [ ] - Improve CSS (Non Important)
 

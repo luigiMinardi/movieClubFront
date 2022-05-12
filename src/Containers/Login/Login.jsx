@@ -113,7 +113,7 @@ const Login = (props) => {
                         </S.FieldWrapper>
                         <S.LoginButton func={login}>Login</S.LoginButton>
                         {errorResponse}
-                        <p style={{ color: gray, fontSize: 'large' }}>Not a member yet? <a style={{ color: white, cursor: 'pointer' }} onClick={() => navigate('/signup')} onMouseEnter={e => e.target.style.textDecoration = 'underline'} onMouseLeave={e => e.target.style.textDecoration = 'none'}>Sign up now.</a></p>
+                        <p style={{ color: gray, fontSize: 'large' }}>Not a member yet?<span style={{ color: white, cursor: 'pointer' }} onClick={() => navigate('/signup')} onMouseEnter={e => e.target.style.textDecoration = 'underline'} onMouseLeave={e => e.target.style.textDecoration = 'none'}>Sign up now.</span></p>
                     </S.SignInCard>
                 </S.SignInCardWrapper>
 

@@ -50,7 +50,7 @@ const Home = (props) => {
                                 autoComplete='email'
                                 minLength='5'
                                 id="input-email"
-                                label='Email Adress'
+                                label='Email Address'
 
                                 bg={white}
                                 inputColor={black}
@@ -77,5 +77,5 @@ const Home = (props) => {
 }
 
 export default connect((store) => ({
-    user: store.authedUser
+    user: store.authenticatedUser
 }))(Home);

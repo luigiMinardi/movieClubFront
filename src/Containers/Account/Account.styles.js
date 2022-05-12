@@ -37,7 +37,7 @@ export const Banner = styled.img`
 export const Description = styled.section`
     position: absolute;
     width: ${movieWidth};
-    
+
     box-sizing: border-box;
     margin-top: -.625em;
     padding: .625em;
@@ -129,7 +129,7 @@ export const Type = styled.span`
         align-items: center;
 `
 
-export const Middot = styled.span`
+export const MidDot = styled.span`
     font-size: x-large;
     color: ${gray};
     font-weight: bold;

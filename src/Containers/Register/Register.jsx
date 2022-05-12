@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { connect } from 'react-redux';
@@ -42,23 +42,15 @@ const Register = (props) => {
         setErrorResponse({ ...errorResponse, [e.target.name]: !e.target.value.trim() ? errorResponse[e.target.name] : null })
     }
 
-    // console.log('inptdta', inputData)
-    // console.log('id', props.data.id)
-    // console.log('dta', props.data)
     const register = async (e, stage) => {
-        // console.log("stage", stage)
-        // console.log('e', e.target.offsetParent.children)
         for (let element in e.target.offsetParent.children) {
-            // console.log('elmt', e.target.offsetParent.children[element])
             if (e.target.offsetParent.children[element].tagName === 'SECTION') {
                 e.target.offsetParent.children[element].children[0].children[0].value = '';
-                // console.log('elmt', e.target.offsetParent.children[element].children[0].children[0]);
             }
         }
         try {
             switch (step) {
                 case false:
-
                     if (props.data.step) {
                         let body = {
                             email: props.data.email,
@@ -77,20 +69,10 @@ const Register = (props) => {
                             password: inputData.password,
                         }
                         let result = await axios.post(`${baseURL}/users/`, body)
-                        // let result = {
-                        //     status: 201,
-                        //     data: {
-                        //         email: "em@il.com",
-                        //         name: "inputData",
-                        //         password: "inputData"
-                        //     }
-                        // }
+
                         if (result.status === 201) {
-                            // console.log(inputData.name)
-                            // console.log(result.data.user.id)
                             setStep(true)
                             props.dispatch({ type: REGISTER, payload: { email: inputData.email, name: inputData.name, step: 1, id: result.data.user.id } })
-                            // props.dispatch({ type: REGISTER, payload: { email: result.data.email, name: result.data.name, step: 1 } })
                         } else if (result.status === 200) {
                             setErrorResponse({ ...errorResponse, email: result.data.msg })
 
@@ -101,7 +83,6 @@ const Register = (props) => {
                     }
                     break;
                 case true:
-                    // console.log('case 1')
                     setStep(false)
 
                     let body = {
@@ -115,13 +96,11 @@ const Register = (props) => {
                             if (inputData[prop] && prop !== 'password') {
                                 update_body[prop] = inputData[prop]
                             }
-                            // console.log(inputData[prop])
                         }
                         let config = {
                             headers: { Authorization: `Bearer ${result.data.token}` }
                         };
-                        let update = await axios.put(`${baseURL}/users/${result.data.user.id}`, update_body, config)
-                        // console.log(update.data)
+                        await axios.put(`${baseURL}/users/${result.data.user.id}`, update_body, config)
 
                         props.dispatch({ type: LOGIN, payload: result.data })
 
@@ -137,7 +116,6 @@ const Register = (props) => {
             }
 
         } catch (error) {
-            // console.log(error.response.data.error.message.match(/password|name|email/i)[0])
             console.log(error)
             console.log(error.response)
             setErrorResponse({ ...errorResponse, [error.response.data.error.message.match(/password|name|email/i)[0]]: error.response.data.error.message })
@@ -175,7 +153,7 @@ const Register = (props) => {
                                             hasChange={handleInputData}
                                             error={errorResponse['name']}
                                         />
-                                        : <div> Wellcome back <span style={{ color: red }}>{props.data.name}</span>! <br /> Let's continue your registration!</div>
+                                        : <div> Welcome back <span style={{ color: red }}>{props.data.name}</span>! <br /> Let's continue your registration!</div>
                                 }
                             </S.FieldWrapper>
                             <S.FieldWrapper>

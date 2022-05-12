@@ -5,7 +5,7 @@ import Header from '../../Components/Header';
 import Footer from '../../Components/Footer';
 import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { baseImageURL, baseURL } from '../../utils';
+import { baseURL } from '../../utils';
 import Button from '../../Components/Button';
 import axios from 'axios';
 
@@ -18,7 +18,6 @@ const Detail = (props) => {
             navigate('/browse');
         }
     })
-    // console.log(props.detail)
 
     const rent = async (movieId, token, userId) => {
         let body = {
@@ -46,7 +45,7 @@ const Detail = (props) => {
         <>
             <Header>
                 <S.ButtonHeader param='/browse'>Return</S.ButtonHeader>
-                <S.ButtonHeader>Click to Signoff</S.ButtonHeader>
+                <S.ButtonHeader>Click to Sign off</S.ButtonHeader>
             </Header>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
 
@@ -54,8 +53,8 @@ const Detail = (props) => {
                 <p style={{ paddingInline: '1.5em' }}>{props.detail?.overview}</p>
                 <img src={props.detail.image} alt={props.detail.title} />
                 <>
-                    {props.authedUser.token &&
-                        <Button func={rent} param={[props.detail.id, props.authedUser.token, props.authedUser.user.id]}>
+                    {props.authenticatedUser.token &&
+                        <Button func={rent} param={[props.detail.id, props.authenticatedUser.token, props.authenticatedUser.user.id]}>
                             Rent
                         </Button>
                     }
@@ -75,6 +74,6 @@ const Detail = (props) => {
 }
 
 export default connect((state) => ({
-    authedUser: state.authedUser,
+    authenticatedUser: state.authenticatedUser,
     detail: state.requestedMovie.info
 }))(Detail);

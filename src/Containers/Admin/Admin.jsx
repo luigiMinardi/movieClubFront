@@ -21,6 +21,7 @@ const Admin = (props) => {
     let navigate = useNavigate();
     const componentMounted = useRef(true);
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(async () => {
         let res = await getOrders();
         if (componentMounted.current) {
@@ -29,6 +30,7 @@ const Admin = (props) => {
         return () => {
             componentMounted.current = false;
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const getOrders = async () => {
@@ -81,10 +83,10 @@ const Admin = (props) => {
 
                             if (mapI < orders.length - 1) {
                                 mapI++
-                                // console.log('ampi', mapI)
+                                // console.log('mapI', mapI)
                             } else {
                                 mapI = 0
-                                // console.log('anmpi', mapI)
+                                // console.log('mapIElse', mapI)
                             }
                             return (
                                 <S.Movie key={order.id} id={order.id}>
@@ -92,7 +94,7 @@ const Admin = (props) => {
                                     <S.Description >
                                         <S.Type>
                                             <span>{movies[mapI].title}</span>
-                                            <S.Middot>&middot;</S.Middot>
+                                            <S.MidDot>&middot;</S.MidDot>
                                             {movies[mapI].adult ? <span>Adult</span> : <span>Family</span>}
                                         </S.Type>
                                         <span>{movies[mapI].date}</span>
@@ -125,5 +127,5 @@ const Admin = (props) => {
     }
 }
 export default connect((store) => ({
-    user: store.authedUser
+    user: store.authenticatedUser
 }))(Admin);

@@ -8,7 +8,7 @@ import profilepic from '../../assets/images/profilepic.png';
 import Header from '../../Components/Header';
 import Footer from '../../Components/Footer';
 
-import { baseImageURL, baseURL } from '../../utils';
+import { baseURL } from '../../utils';
 import { connect } from 'react-redux';
 import { LOGOUT, MOVIE_INFO } from '../../redux/actions';
 
@@ -21,6 +21,7 @@ const Browse = (props) => {
     const [maxIndex, setMaxIndex] = useState(4)  // Number of pages on the carousel
 
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(async () => {
         let res = await getMovies();
         if (componentMounted.current) {
@@ -29,6 +30,7 @@ const Browse = (props) => {
         return () => {
             componentMounted.current = false;
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const getMovies = async (endpoint = 'movies') => {
@@ -153,9 +155,9 @@ const Browse = (props) => {
                                         </S.Data>
                                         <S.Type>
                                             <span>Explosive</span>
-                                            <S.Middot>&middot;</S.Middot>
+                                            <S.MidDot>&middot;</S.MidDot>
                                             <span>Exciting</span>
-                                            <S.Middot>&middot;</S.Middot>
+                                            <S.MidDot>&middot;</S.MidDot>
                                             <span>Family</span>
                                         </S.Type>
                                     </S.Description>
@@ -217,9 +219,9 @@ const Browse = (props) => {
                                         </S.Data>
                                         <S.Type>
                                             <span>Explosive</span>
-                                            <S.Middot>&middot;</S.Middot>
+                                            <S.MidDot>&middot;</S.MidDot>
                                             <span>Exciting</span>
-                                            <S.Middot>&middot;</S.Middot>
+                                            <S.MidDot>&middot;</S.MidDot>
                                             <span>Family</span>
                                         </S.Type>
                                     </S.Description>
@@ -246,5 +248,5 @@ const Browse = (props) => {
 }
 
 export default connect((store) => ({
-    user: store.authedUser
+    user: store.authenticatedUser
 }))(Browse);
